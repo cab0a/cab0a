@@ -22,6 +22,14 @@ My approach combines technical investigation with practical implementation. It s
 
 For applied R&D, research should lead to an implementation that can be tested. Prototypes are evaluated against explicit criteria, and the results guide the next improvement or clarify the method's practical limitations.
 
+## Featured Project
+
+### [Image Dataset Inspector](https://github.com/cab0a/image-dataset-inspector)
+
+A focused Python CLI for recursively inspecting JPEG and PNG datasets with OpenCV. It records image properties and simple brightness, contrast, and blur metrics in CSV while continuing safely past unreadable files.
+
+The repository includes a demo image generator, unit tests for relative metric behavior, documented limitations, and automated tests across multiple Python versions.
+
 ## Planned Public Projects
 
 The following projects are planned or in early development. They are listed here as a roadmap, not as completed work.
