@@ -1,43 +1,52 @@
-# Research and Development Engineer
+# Python業務自動化・データ分析・画像処理
 
-I build Python-based prototypes for machine learning, computer vision, image processing, and 3D data processing. My work centers on technical research, proof-of-concept development, point cloud processing, data processing, and automation—with an emphasis on turning technical questions into testable implementations.
+Pythonを使って、手作業のデータ処理や画像確認を自動化します。要件整理から実装、テスト、結果の説明まで一貫して対応し、CSVレポート、Excelファイル、CLIツール、検証結果など、再利用できる形で納品します。
 
-## Core Strengths
+## 対応できること
 
-**Research → Method Selection → Prototype → Evaluation → Improvement → Documentation**
+- Excel・CSVの集計、整形、データチェック、レポート作成
+- 画像フォルダの一括検査とCSV出力
+- OpenCVを使った画像処理、判定、パラメータ比較
+- Web・APIから取得したデータの整理と保存
+- 既存Pythonコードの修正、テスト追加、保守性の改善
+- 機械学習・画像処理手法の技術調査、PoC、精度評価
+- 3Dデータ・点群データの処理、分析、検証
 
-The work begins with understanding the problem, reviewing relevant papers and methods, and comparing practical options. Selected approaches are implemented as focused prototypes, evaluated against explicit criteria, improved based on the results, and documented with their assumptions and limitations.
+「入力データはあるが、どのような処理にすべきか決まっていない」という段階でも、目的と希望する出力を確認し、実装方法を整理します。
 
-## Technical Focus
+## 進め方
 
-- **Python Development and Data Analysis:** Data processing, automation, and prototype implementation
-- **Machine Learning and Computer Vision:** Reproducible experiments, image processing, and object detection
-- **3D Data and Point Cloud Processing:** Processing, analysis, and experiments using public datasets
-- **Technical Investigation and Prototype Development:** Literature review, method comparison, feasibility testing, and PoC development
-- **Evaluation and Benchmarking:** Metric-based comparison, error analysis, reproducibility, and iterative improvement
+**要件確認 → 方法選定 → 実装 → テスト・評価 → 改善 → ドキュメント**
 
-## Engineering Approach
+動作するコードだけでなく、前提条件、使い方、評価結果、既知の制約も整理します。小規模な自動化から、技術的な実現可能性を確認するPoCまで対応できます。
 
-**Research → Prototype → Evaluate → Improve**
+## 技術分野
 
-Research is most useful when it leads to an implementation that can be tested. Prototypes make assumptions and trade-offs explicit; evaluation then provides the evidence needed to improve the method or identify its practical limits.
+- **Python・データ処理:** pandasを使った集計、変換、自動化、レポート出力
+- **機械学習・コンピュータビジョン:** 再現可能な実験、画像処理、物体検出
+- **3D・点群処理:** 公開データを使った処理、分析、実験
+- **技術調査・PoC:** 文献調査、手法比較、実現可能性の検証
+- **評価・改善:** 指標による比較、エラー分析、再現性の確保
 
-## Featured Project
+## Featured Projects
 
 ### [Image Dataset Inspector](https://github.com/cab0a/image-dataset-inspector)
 
-A focused Python CLI that recursively inspects JPEG and PNG datasets with OpenCV. It records image dimensions and simple brightness, contrast, and blur metrics in CSV while reporting unreadable files without interrupting the scan.
+大量のJPEG・PNG画像を一括検査し、画像サイズ、明るさ、コントラスト、ぼけ指標、読み込みエラーをCSVに出力するPython CLIツールです。壊れた画像が混ざっていても処理を継続します。
 
-The repository includes a synthetic demo dataset generator, unit tests covering decoding failures, CSV reporting, and relative metric behavior, and documentation of the methodology and limitations.
+**想定用途:** AI学習データの事前確認、商品画像の品質チェック、画像フォルダの棚卸し
 
-## Planned Public Projects
+### [Vision Playground](https://github.com/cab0a/vision-playground)
 
-The following projects are planned or in early development. They represent a publication roadmap, not completed releases.
+OpenCVによるしきい値処理、ノイズ除去、エッジ検出、セグメンテーションを、合成データと公開画像で比較する再現可能な実験プロジェクトです。IoU、Precision、Recall、F1による定量評価、pytest、GitHub Actions、CSV・比較画像の出力を含みます。
+
+**示している能力:** 仮説設定、実験設計、実装、パラメータ感度分析、定量評価、結果と限界の説明
+
+## Public Project Roadmap
 
 | Project | Status | Scope |
 | --- | --- | --- |
-| `research-notes` | Planned | Notes on papers, methods, and technical investigations |
-| `data-cleaning-toolkit` | Planned | Utilities for cleaning, validating, and transforming tabular data |
-| `vision-playground` | Planned | Reproducible experiments in image processing and computer vision |
-| `pointcloud-playground` | Planned | Experiments using public point-cloud datasets |
-| `research-to-poc` | Planned | Projects documenting the path from technical research to prototype and evaluation |
+| `excel-report-automation` | Planned | 複数のCSV・Excelを結合、整形、集計し、グラフ付きレポートを生成 |
+| `data-cleaning-toolkit` | Planned | 表形式データの検証、クリーニング、変換 |
+| `pointcloud-playground` | Planned | 公開点群データを使った再現可能な実験 |
+| `research-to-poc` | Planned | 技術調査から試作、評価までのプロセスを記録 |
