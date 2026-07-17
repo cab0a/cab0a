@@ -1,52 +1,54 @@
-# Python業務自動化・データ分析・画像処理
+# Research and Development Engineer
 
-Pythonを使って、手作業のデータ処理や画像確認を自動化します。要件整理から実装、テスト、結果の説明まで一貫して対応し、CSVレポート、Excelファイル、CLIツール、検証結果など、再利用できる形で納品します。
+I build small, reproducible systems for technical investigation and proof-of-concept development using Python.
 
-## 対応できること
+My work focuses on machine learning, computer vision, image processing, 3D and point-cloud data, data processing, and automation. The emphasis is not only on implementation, but also on selecting an appropriate method, evaluating its behavior, identifying failure conditions, and documenting the result.
 
-- Excel・CSVの集計、整形、データチェック、レポート作成
-- 画像フォルダの一括検査とCSV出力
-- OpenCVを使った画像処理、判定、パラメータ比較
-- Web・APIから取得したデータの整理と保存
-- 既存Pythonコードの修正、テスト追加、保守性の改善
-- 機械学習・画像処理手法の技術調査、PoC、精度評価
-- 3Dデータ・点群データの処理、分析、検証
+## Engineering Workflow
 
-「入力データはあるが、どのような処理にすべきか決まっていない」という段階でも、目的と希望する出力を確認し、実装方法を整理します。
+`Research → Method Selection → Prototype → Evaluation → Improvement → Documentation`
 
-## 進め方
+This workflow is used to move from an open technical question to a reviewable implementation and evidence-based conclusion.
 
-**要件確認 → 方法選定 → 実装 → テスト・評価 → 改善 → ドキュメント**
+## Technical Focus
 
-動作するコードだけでなく、前提条件、使い方、評価結果、既知の制約も整理します。小規模な自動化から、技術的な実現可能性を確認するPoCまで対応できます。
-
-## 技術分野
-
-- **Python・データ処理:** pandasを使った集計、変換、自動化、レポート出力
-- **機械学習・コンピュータビジョン:** 再現可能な実験、画像処理、物体検出
-- **3D・点群処理:** 公開データを使った処理、分析、実験
-- **技術調査・PoC:** 文献調査、手法比較、実現可能性の検証
-- **評価・改善:** 指標による比較、エラー分析、再現性の確保
+- **Python Development:** command-line tools, data processing, automation, testing, and maintainable package structure
+- **Machine Learning and Computer Vision:** reproducible experiments, image processing, object detection, and method comparison
+- **3D and Point-Cloud Processing:** public-data experiments, geometric processing, analysis, and quantitative evaluation
+- **Technical Investigation:** literature review, method selection, prototype development, and feasibility testing
+- **Evaluation:** metrics, parameter sensitivity, error analysis, benchmarking, and reproducibility
 
 ## Featured Projects
 
 ### [Image Dataset Inspector](https://github.com/cab0a/image-dataset-inspector)
 
-大量のJPEG・PNG画像を一括検査し、画像サイズ、明るさ、コントラスト、ぼけ指標、読み込みエラーをCSVに出力するPython CLIツールです。壊れた画像が混ざっていても処理を継続します。
+A Python and OpenCV CLI that recursively inspects JPEG and PNG datasets, records unreadable files without stopping the scan, and exports dimensions, file size, brightness, contrast, and Laplacian-based blur metrics to CSV.
 
-**想定用途:** AI学習データの事前確認、商品画像の品質チェック、画像フォルダの棚卸し
+- Stable sample release: [`v0.1.2`](https://github.com/cab0a/image-dataset-inspector/releases/tag/v0.1.2)
+- Includes generated demo images, checksum-verified public samples, unit tests, and CI
+- Demonstrates input validation and dataset inspection before downstream vision experiments
 
 ### [Vision Playground](https://github.com/cab0a/vision-playground)
 
-OpenCVによるしきい値処理、ノイズ除去、エッジ検出、セグメンテーションを、合成データと公開画像で比較する再現可能な実験プロジェクトです。IoU、Precision、Recall、F1による定量評価、pytest、GitHub Actions、CSV・比較画像の出力を含みます。
+A reproducible collection of OpenCV experiments covering thresholding, parameter sensitivity, denoising, edge detection, and classical segmentation.
 
-**示している能力:** 仮説設定、実験設計、実装、パラメータ感度分析、定量評価、結果と限界の説明
+- Stable release: [`v1.0.0`](https://github.com/cab0a/vision-playground/releases/tag/v1.0.0)
+- Five registered experiments and 165 method-condition evaluations
+- Includes synthetic ground truth, a labeled public-data subset, CSV metrics, visual comparisons, tests, CI, and SHA-256 result verification
+- Documents assumptions, failure conditions, valid interpretations, and limitations
 
-## Public Project Roadmap
+## In Progress
 
-| Project | Status | Scope |
-| --- | --- | --- |
-| `excel-report-automation` | Planned | 複数のCSV・Excelを結合、整形、集計し、グラフ付きレポートを生成 |
-| `data-cleaning-toolkit` | Planned | 表形式データの検証、クリーニング、変換 |
-| `pointcloud-playground` | Planned | 公開点群データを使った再現可能な実験 |
-| `research-to-poc` | Planned | 技術調査から試作、評価までのプロセスを記録 |
+### `pointcloud-playground`
+
+A reproducible point-cloud experiment beginning with voxel downsampling under controlled density. The first release will include generated data, a license-verified public sample, quantitative metrics, visual comparisons, a CLI, tests, and documented limitations.
+
+## Planned Public Projects
+
+| Project | Scope |
+| --- | --- |
+| `data-cleaning-toolkit` | Utilities for validating, cleaning, and transforming tabular data |
+| `research-notes` | Notes on papers, methods, and technical investigations |
+| `research-to-poc` | Case studies documenting the path from research to prototype and evaluation |
+
+All public work is based on independently created code, open-source software, public datasets, and public research.
