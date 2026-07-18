@@ -39,12 +39,13 @@ A reproducible collection of OpenCV experiments covering thresholding, parameter
 
 ### [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground)
 
-A reproducible point-cloud experiment that evaluates centroid-based voxel downsampling on controlled synthetic data and a traceable public USGS 3DEP lidar sample.
+A reproducible point-cloud experiment suite that evaluates voxel downsampling and statistical outlier filtering on controlled synthetic data and a traceable public USGS 3DEP lidar sample.
 
-- Initial release: [`v0.1.0`](https://github.com/cab0a/pointcloud-playground/releases/tag/v0.1.0)
-- Reports point retention, nearest-neighbor spacing, and coverage RMSE across multiple voxel sizes
+- Current release: [`v0.2.0`](https://github.com/cab0a/pointcloud-playground/releases/tag/v0.2.0)
+- Injects deterministic labeled outliers and measures precision, recall, F1, inlier retention, and clean coverage across a threshold sweep
+- Shows that the highest-F1 filtering threshold changes between the synthetic surface and the public lidar sample
 - Includes deterministic data generation, source checksums, CSV metrics, comparison plots, a CLI, tests, and CI for Python 3.10 through 3.14
-- Documents the relationship between point reduction and geometric coverage without prescribing a universal parameter choice
+- Documents method assumptions, parameter trade-offs, reproducible results, and limitations without prescribing a universal setting
 
 ## Planned Public Projects
 
