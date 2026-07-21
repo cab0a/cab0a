@@ -39,14 +39,13 @@ A reproducible collection of OpenCV experiments covering thresholding, parameter
 
 ### [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground)
 
-A reproducible point-cloud experiment suite covering voxel downsampling, statistical outlier filtering, local PCA normal estimation, controlled rigid registration, partial-overlap registration, and cross-experiment evidence review on synthetic data and a traceable public USGS 3DEP lidar sample.
+A reproducible point-cloud experiment suite covering voxel downsampling, statistical outlier filtering, local PCA normal estimation, controlled rigid registration, partial-overlap registration, joint overlap-and-outlier sensitivity, and cross-experiment evidence review on synthetic data and a traceable public USGS 3DEP lidar sample.
 
-- Current release: [`v0.7.0`](https://github.com/cab0a/pointcloud-playground/releases/tag/v0.7.0)
-- Evaluates 28 trim-fraction and overlap conditions per dataset, including the all-pairs endpoint
-- Uses known overlap membership and exact generating pairs to report retained-pair composition, correspondence precision and recall, residuals, transform error, and recovery
-- Identifies a controlled recovery boundary while explicitly separating labeled evaluation results from production parameter recommendations
-- Consolidates twelve result sets spanning six experiments and two datasets into a shared review schema without combining incompatible metrics into one score
-- Records representative-condition rules and evidence scope so summary values are not presented as universal recommendations
+- Current release: [`v0.8.0`](https://github.com/cab0a/pointcloud-playground/releases/tag/v0.8.0)
+- Evaluates 48 joint sensitivity conditions per dataset across four overlap levels, four controlled outlier rates, and three correspondence-retention policies
+- Uses known transforms, overlap membership, exact generating pairs, and outlier labels to report correspondence composition, precision and recall, outlier rejection, residuals, transform error, and recovery
+- Demonstrates a controlled effective-valid-pair boundary while keeping experimental findings separate from production parameter recommendations
+- Consolidates fourteen result sets spanning seven experiments and two datasets into a shared review schema without combining incompatible metrics into one score
 - Provides a consistent CLI and `results/<experiment>/<dataset>/` layout while retaining the earlier downsampling command as an alias
 - Includes deterministic data generation, source checksums, CSV metrics, comparison plots, a CLI, tests, and CI for Python 3.10 through 3.14
 - Documents method assumptions, evidence boundaries, parameter trade-offs, reproducible results, and limitations
