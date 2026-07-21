@@ -39,14 +39,15 @@ A reproducible collection of OpenCV experiments covering thresholding, parameter
 
 ### [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground)
 
-A reproducible point-cloud experiment suite covering voxel downsampling, statistical outlier filtering, and local PCA normal estimation on controlled synthetic data and a traceable public USGS 3DEP lidar sample.
+A reproducible point-cloud experiment suite covering voxel downsampling, statistical outlier filtering, local PCA normal estimation, and controlled rigid registration on synthetic data and a traceable public USGS 3DEP lidar sample.
 
-- Current release: [`v0.3.0`](https://github.com/cab0a/pointcloud-playground/releases/tag/v0.3.0)
-- Compares PCA normal estimation across neighborhood sizes using analytic synthetic ground truth and controlled coordinate perturbations
-- Quantifies angular accuracy, repeatability, support radius, and surface variation without treating public-data stability as ground-truth accuracy
-- Includes labeled outlier-filtering evaluation and voxel-downsampling coverage experiments from earlier releases
+- Current release: [`v0.4.0`](https://github.com/cab0a/pointcloud-playground/releases/tag/v0.4.0)
+- Evaluates point-to-point ICP under known rotations and translations scaled by median point spacing
+- Separates known-correspondence error from nearest-neighbor error to expose incomplete or incorrect recovery
+- Compares fixed-budget convergence behavior on controlled synthetic data and a public lidar sample
+- Includes normal-estimation, labeled outlier-filtering, and voxel-downsampling experiments from earlier releases
 - Includes deterministic data generation, source checksums, CSV metrics, comparison plots, a CLI, tests, and CI for Python 3.10 through 3.14
-- Documents method assumptions, parameter trade-offs, reproducible results, and limitations without prescribing a universal setting
+- Documents method assumptions, convergence limits, parameter trade-offs, reproducible results, and limitations without prescribing a universal setting
 
 ## Planned Public Projects
 
