@@ -34,10 +34,10 @@ Reproducible technical investigations that connect source review and method
 selection to controlled experiments, evaluation, interpretation, and explicit
 limitations.
 
-- Initial release: [`v0.1.0`](https://github.com/cab0a/research-notes/releases/tag/v0.1.0)
-- Evaluates Laplacian variance under 36 synthetic blur-and-noise conditions with deterministic seeds
-- Includes generated reference data and visualization, relative-behavior tests, and CI reproduction checks
-- Demonstrates why a useful blur heuristic is not a universal image-quality score or fixed threshold
+- Current release: [`v0.2.0`](https://github.com/cab0a/research-notes/releases/tag/v0.2.0)
+- Compares Laplacian variance and area-normalized Tenengrad across 720 repeated Gaussian blur-and-noise observations
+- Includes distribution summaries, deterministic raw trials, bounded motion-blur and resize-sensitivity experiments, tests, and CI reproduction checks
+- Separates controlled evidence from universal metric-superiority or fixed-threshold claims
 
 ### [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit)
 
