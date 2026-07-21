@@ -28,6 +28,17 @@ A Python and OpenCV CLI that recursively inspects JPEG and PNG datasets, records
 - Includes generated demo images, checksum-verified public samples, unit tests, and CI
 - Demonstrates input validation and dataset inspection before downstream vision experiments
 
+### [Research Notes](https://github.com/cab0a/research-notes)
+
+Reproducible technical investigations that connect source review and method
+selection to controlled experiments, evaluation, interpretation, and explicit
+limitations.
+
+- Initial release: [`v0.1.0`](https://github.com/cab0a/research-notes/releases/tag/v0.1.0)
+- Evaluates Laplacian variance under 36 synthetic blur-and-noise conditions with deterministic seeds
+- Includes generated reference data and visualization, relative-behavior tests, and CI reproduction checks
+- Demonstrates why a useful blur heuristic is not a universal image-quality score or fixed threshold
+
 ### [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit)
 
 A deterministic Python CLI for inspecting UTF-8 CSV files, drafting reviewable
@@ -67,7 +78,6 @@ A stable, reproducible point-cloud experiment suite covering voxel downsampling,
 
 | Project | Scope |
 | --- | --- |
-| `research-notes` | Notes on papers, methods, and technical investigations |
 | `research-to-poc` | Case studies documenting the path from research to prototype and evaluation |
 
 All public work is based on independently created code, open-source software, public datasets, and public research.
