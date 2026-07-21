@@ -28,6 +28,18 @@ A Python and OpenCV CLI that recursively inspects JPEG and PNG datasets, records
 - Includes generated demo images, checksum-verified public samples, unit tests, and CI
 - Demonstrates input validation and dataset inspection before downstream vision experiments
 
+### [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit)
+
+A deterministic Python CLI for inspecting UTF-8 CSV files, drafting reviewable
+schema rules, and applying explicit normalization, validation, and
+deduplication with machine-readable audit evidence.
+
+- Current version: [`v0.2.0`](https://github.com/cab0a/data-cleaning-toolkit/tree/v0.2.0)
+- Separates structural inspection, conservative schema suggestion, and reviewed schema-driven cleaning
+- Reports per-column parse coverage and preserves leading-zero identifiers as strings during suggestion
+- Includes synthetic dirty data, a controlled seven-column type evaluation, deterministic reference outputs, 27 tests, and CI for Python 3.10 through 3.14
+- Demonstrates reproducible tabular-data preparation without opaque repair heuristics
+
 ### [Vision Playground](https://github.com/cab0a/vision-playground)
 
 A reproducible collection of OpenCV experiments covering thresholding, parameter sensitivity, denoising, edge detection, and classical segmentation.
@@ -55,7 +67,6 @@ A stable, reproducible point-cloud experiment suite covering voxel downsampling,
 
 | Project | Scope |
 | --- | --- |
-| `data-cleaning-toolkit` | Utilities for validating, cleaning, and transforming tabular data |
 | `research-notes` | Notes on papers, methods, and technical investigations |
 | `research-to-poc` | Case studies documenting the path from research to prototype and evaluation |
 
