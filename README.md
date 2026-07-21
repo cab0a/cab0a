@@ -39,15 +39,15 @@ A reproducible collection of OpenCV experiments covering thresholding, parameter
 
 ### [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground)
 
-A reproducible point-cloud experiment suite covering voxel downsampling, statistical outlier filtering, local PCA normal estimation, and controlled rigid registration on synthetic data and a traceable public USGS 3DEP lidar sample.
+A reproducible point-cloud experiment suite covering voxel downsampling, statistical outlier filtering, local PCA normal estimation, controlled rigid registration, and cross-experiment evidence review on synthetic data and a traceable public USGS 3DEP lidar sample.
 
-- Current release: [`v0.4.0`](https://github.com/cab0a/pointcloud-playground/releases/tag/v0.4.0)
-- Evaluates point-to-point ICP under known rotations and translations scaled by median point spacing
-- Separates known-correspondence error from nearest-neighbor error to expose incomplete or incorrect recovery
-- Compares fixed-budget convergence behavior on controlled synthetic data and a public lidar sample
-- Includes normal-estimation, labeled outlier-filtering, and voxel-downsampling experiments from earlier releases
+- Current release: [`v0.5.0`](https://github.com/cab0a/pointcloud-playground/releases/tag/v0.5.0)
+- Consolidates eight result sets spanning four experiments and two datasets into a shared review schema without combining incompatible metrics into one score
+- Records representative-condition rules and evidence scope so summary values are not presented as universal recommendations
+- Provides a consistent CLI and `results/<experiment>/<dataset>/` layout while retaining the earlier downsampling command as an alias
+- Includes controlled ICP, normal-estimation, labeled outlier-filtering, and voxel-downsampling evaluations
 - Includes deterministic data generation, source checksums, CSV metrics, comparison plots, a CLI, tests, and CI for Python 3.10 through 3.14
-- Documents method assumptions, convergence limits, parameter trade-offs, reproducible results, and limitations without prescribing a universal setting
+- Documents method assumptions, evidence boundaries, parameter trade-offs, reproducible results, and limitations
 
 ## Planned Public Projects
 
