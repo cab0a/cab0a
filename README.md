@@ -42,13 +42,13 @@ limitations.
 ### [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit)
 
 A deterministic Python CLI for inspecting UTF-8 CSV files, drafting reviewable
-schema rules, and applying explicit normalization, validation, and
-deduplication with machine-readable audit evidence.
+schema rules, and applying explicit value mapping, normalization, validation,
+and deduplication with machine-readable audit evidence.
 
-- Current version: [`v0.2.0`](https://github.com/cab0a/data-cleaning-toolkit/tree/v0.2.0)
+- Current release: [`v0.3.0`](https://github.com/cab0a/data-cleaning-toolkit/releases/tag/v0.3.0)
 - Separates structural inspection, conservative schema suggestion, and reviewed schema-driven cleaning
-- Reports per-column parse coverage and preserves leading-zero identifiers as strings during suggestion
-- Includes synthetic dirty data, a controlled seven-column type evaluation, deterministic reference outputs, 27 tests, and CI for Python 3.10 through 3.14
+- Maps reviewed aliases with exact rules and records row-level audit evidence for each applied mapping
+- Includes controlled type and value-mapping evaluations, deterministic reference outputs, 35 tests, and CI for Python 3.10 through 3.14
 - Demonstrates reproducible tabular-data preparation without opaque repair heuristics
 
 ### [Vision Playground](https://github.com/cab0a/vision-playground)
