@@ -39,16 +39,17 @@ A reproducible collection of OpenCV experiments covering thresholding, parameter
 
 ### [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground)
 
-A reproducible point-cloud experiment suite covering voxel downsampling, statistical outlier filtering, local PCA normal estimation, controlled rigid registration, partial-overlap registration, joint overlap-and-outlier sensitivity, and cross-experiment evidence review on synthetic data and a traceable public USGS 3DEP lidar sample. The project also defines a reviewed Python API and an automated reproducibility contract.
+A stable, reproducible point-cloud experiment suite covering voxel downsampling, statistical outlier filtering, local PCA normal estimation, controlled rigid registration, partial-overlap registration, joint overlap-and-outlier sensitivity, and cross-experiment evidence review on synthetic data and a traceable public USGS 3DEP lidar sample.
 
-- Current release: [`v0.9.0`](https://github.com/cab0a/pointcloud-playground/releases/tag/v0.9.0)
+- Current release: [`v1.0.0`](https://github.com/cab0a/pointcloud-playground/releases/tag/v1.0.0)
 - Evaluates 48 joint sensitivity conditions per dataset across four overlap levels, four controlled outlier rates, and three correspondence-retention policies
 - Uses known transforms, overlap membership, exact generating pairs, and outlier labels to report correspondence composition, precision and recall, outlier rejection, residuals, transform error, and recovery
 - Demonstrates a controlled effective-valid-pair boundary while keeping experimental findings separate from production parameter recommendations
 - Consolidates fourteen result sets spanning seven experiments and two datasets into a shared review schema without combining incompatible metrics into one score
-- Provides a focused top-level Python API, a consistent CLI, and a canonical `results/<experiment>/<dataset>/` layout
+- Defines a stable 1.x contract for the top-level Python API, existing CLI, primary output filenames, and CSV schemas
 - Supports non-destructive reference regeneration and verifies two inputs, fifteen CSV reports, one generated Markdown summary, and fifteen figures
-- Includes 67 tests and CI for Python 3.10 through 3.14, with documented API, reproducibility, evidence, and limitation boundaries
+- Includes 68 tests plus sdist, wheel, installation, and CLI checks in CI for Python 3.10 through 3.14
+- Documents API, reproducibility, evidence, limitation, changelog, and stable-release review boundaries
 
 ## Planned Public Projects
 
