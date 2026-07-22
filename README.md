@@ -34,10 +34,10 @@ Reproducible technical investigations that connect source review and method
 selection to controlled experiments, evaluation, interpretation, and explicit
 limitations.
 
-- Current release: [`v0.6.0`](https://github.com/cab0a/research-notes/releases/tag/v0.6.0)
-- Evaluates circular disk defocus and directional linear motion across controlled extent, angle, and noise conditions
-- Compares 17 PSFs across 5,100 metric observations, 150 paired deterministic seeds, 510 condition summaries, and 72 direction summaries
-- Includes transparent synthetic PSF audits, committed reference artifacts, 24 tests, and CI reproduction checks without claiming a universal threshold or equivalent severity scale
+- Current release: [`v0.7.0`](https://github.com/cab0a/research-notes/releases/tag/v0.7.0)
+- Evaluates brightness, contrast, gamma, global min-max normalization, repeated JPEG recompression, color-conversion order, and fixed-calibration transfer
+- Records 11,520 paired metric observations across 16 pipelines, four blur levels, three channel-noise levels, and deterministic repeated trials
+- Includes reusable photometric and recompression controls, four committed CSV reports, two figures, 30 tests, and CI reproduction checks without claiming a universal quality threshold
 
 ### [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit)
 
