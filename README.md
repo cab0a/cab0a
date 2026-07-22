@@ -34,10 +34,10 @@ Reproducible technical investigations that connect source review and method
 selection to controlled experiments, evaluation, interpretation, and explicit
 limitations.
 
-- Current release: [`v0.2.0`](https://github.com/cab0a/research-notes/releases/tag/v0.2.0)
-- Compares Laplacian variance and area-normalized Tenengrad across 720 repeated Gaussian blur-and-noise observations
-- Includes distribution summaries, deterministic raw trials, bounded motion-blur and resize-sensitivity experiments, tests, and CI reproduction checks
-- Separates controlled evidence from universal metric-superiority or fixed-threshold claims
+- Current release: [`v0.3.0`](https://github.com/cab0a/research-notes/releases/tag/v0.3.0)
+- Evaluates how full-image Laplacian variance and Tenengrad scores can dilute spatially localized blur
+- Compares global, tile-mean, lower-tail, and minimum aggregation across 66 synthetic image conditions and 2,112 tile-level observations
+- Includes deterministic artifacts, 11 tests, and CI reproduction checks while separating controlled evidence from universal threshold claims
 
 ### [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit)
 
