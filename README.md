@@ -60,10 +60,11 @@ machine-readable audit evidence.
 
 A reproducible machine-learning evaluation project that compares a majority-class baseline with logistic regression on a pinned public dataset.
 
-- Current release: [`v0.1.0`](https://github.com/cab0a/ml-evaluation-workbench/releases/tag/v0.1.0)
-- Uses a deterministic stratified holdout with median imputation and standardization fitted only on the training partition
-- Reports accuracy, balanced accuracy, macro F1, per-class recall, row-level predictions, a confusion matrix, and a concise error analysis
-- Includes CC0 dataset provenance, SHA-256-verified reference artifacts, 16 tests, and CI for Python 3.10 through 3.14
+- Current release: [`v0.2.0`](https://github.com/cab0a/ml-evaluation-workbench/releases/tag/v0.2.0)
+- Compares a deterministic holdout with five shared stratified cross-validation folds while fitting preprocessing inside every training partition
+- Reports fold-level metrics, variability summaries, paired model gains, holdout predictions, a confusion matrix, and a cross-validation score figure
+- Records logistic-regression macro F1 of 0.928 ± 0.041 across the five observed folds without treating the variation as a confidence interval
+- Includes CC0 dataset provenance, five SHA-256-verified reference artifacts, 21 tests, and CI for Python 3.10 through 3.14
 
 ### [Vision Playground](https://github.com/cab0a/vision-playground)
 
