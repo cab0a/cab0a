@@ -34,10 +34,10 @@ Reproducible technical investigations that connect source review and method
 selection to controlled experiments, evaluation, interpretation, and explicit
 limitations.
 
-- Current release: [`v0.3.0`](https://github.com/cab0a/research-notes/releases/tag/v0.3.0)
-- Evaluates how full-image Laplacian variance and Tenengrad scores can dilute spatially localized blur
-- Compares global, tile-mean, lower-tail, and minimum aggregation across 66 synthetic image conditions and 2,112 tile-level observations
-- Includes deterministic artifacts, 11 tests, and CI reproduction checks while separating controlled evidence from universal threshold claims
+- Current release: [`v0.4.0`](https://github.com/cab0a/research-notes/releases/tag/v0.4.0)
+- Evaluates how window size, stride, and mask alignment affect the visibility of spatially localized blur
+- Compares four window geometries over 8,073 clean window observations and 360 deterministic repeated-noise observations
+- Includes a low-texture counterexample, committed reference artifacts, 14 tests, and CI reproduction checks while separating controlled evidence from universal threshold claims
 
 ### [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit)
 
