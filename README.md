@@ -34,10 +34,10 @@ Reproducible technical investigations that connect source review and method
 selection to controlled experiments, evaluation, interpretation, and explicit
 limitations.
 
-- Current release: [`v0.5.0`](https://github.com/cab0a/research-notes/releases/tag/v0.5.0)
-- Evaluates calibration drift under JPEG compression, resizing, denoising, sharpening, and preprocessing order changes
-- Compares 13 pipelines across 9,360 observations, 360 deterministic seeds, and 312 response summaries
-- Includes transparent synthetic calibration anchors, committed reference artifacts, 19 tests, and CI reproduction checks without claiming a universal quality threshold
+- Current release: [`v0.6.0`](https://github.com/cab0a/research-notes/releases/tag/v0.6.0)
+- Evaluates circular disk defocus and directional linear motion across controlled extent, angle, and noise conditions
+- Compares 17 PSFs across 5,100 metric observations, 150 paired deterministic seeds, 510 condition summaries, and 72 direction summaries
+- Includes transparent synthetic PSF audits, committed reference artifacts, 24 tests, and CI reproduction checks without claiming a universal threshold or equivalent severity scale
 
 ### [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit)
 
