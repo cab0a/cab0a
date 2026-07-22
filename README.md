@@ -34,10 +34,10 @@ Reproducible technical investigations that connect source review and method
 selection to controlled experiments, evaluation, interpretation, and explicit
 limitations.
 
-- Current release: [`v0.4.0`](https://github.com/cab0a/research-notes/releases/tag/v0.4.0)
-- Evaluates how window size, stride, and mask alignment affect the visibility of spatially localized blur
-- Compares four window geometries over 8,073 clean window observations and 360 deterministic repeated-noise observations
-- Includes a low-texture counterexample, committed reference artifacts, 14 tests, and CI reproduction checks while separating controlled evidence from universal threshold claims
+- Current release: [`v0.5.0`](https://github.com/cab0a/research-notes/releases/tag/v0.5.0)
+- Evaluates calibration drift under JPEG compression, resizing, denoising, sharpening, and preprocessing order changes
+- Compares 13 pipelines across 9,360 observations, 360 deterministic seeds, and 312 response summaries
+- Includes transparent synthetic calibration anchors, committed reference artifacts, 19 tests, and CI reproduction checks without claiming a universal quality threshold
 
 ### [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit)
 
