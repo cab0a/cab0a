@@ -34,10 +34,10 @@ Reproducible technical investigations that connect source review and method
 selection to controlled experiments, evaluation, interpretation, and explicit
 limitations.
 
-- Current release: [`v0.8.0`](https://github.com/cab0a/research-notes/releases/tag/v0.8.0)
-- Evaluates primary-to-secondary JPEG quality order, aligned and shifted block grids, explicit 4:4:4 and 4:2:0 sampling paths, and fixed-calibration transfer
-- Records 4,320 paired metric observations across nine two-stage histories, two grid alignments, four blur levels, two channel-noise levels, and deterministic repeated trials
-- Includes deterministic JPEG controls, four committed CSV reports, two figures, 33 tests, and CI reproduction checks without claiming a universal quality threshold
+- Current release: [`v0.9.0`](https://github.com/cab0a/research-notes/releases/tag/v0.9.0)
+- Evaluates JPEG DQT and SOF marker data, numeric-quality portability, explicit quantization-table transfer, entropy-coding differences, and decoded-pixel agreement
+- Audits quality 1–100 and records 1,152 metric observations across four encoder paths, two decoders, three selected qualities, two sampling modes, and four blur levels
+- Includes reusable JPEG codec adapters and marker parsing, seven committed CSV reports, two figures, 38 tests, and full CI reproduction without treating quality numbers as portable perceptual scales
 
 ### [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit)
 
