@@ -56,6 +56,15 @@ machine-readable audit evidence.
 - Enforces named one-to-one presence dependencies after normalization and records the trigger and target in each failure
 - Includes controlled type, value-mapping, mapping-coverage, unmatched-frequency, privacy-mode, cross-column, conditional-presence, public API, and reproducibility evaluations, 16 checksum-verified reference artifacts, 94 tests, and CI for Python 3.10 through 3.14
 
+### [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench)
+
+A reproducible machine-learning evaluation project that compares a majority-class baseline with logistic regression on a pinned public dataset.
+
+- Current release: [`v0.1.0`](https://github.com/cab0a/ml-evaluation-workbench/releases/tag/v0.1.0)
+- Uses a deterministic stratified holdout with median imputation and standardization fitted only on the training partition
+- Reports accuracy, balanced accuracy, macro F1, per-class recall, row-level predictions, a confusion matrix, and a concise error analysis
+- Includes CC0 dataset provenance, SHA-256-verified reference artifacts, 16 tests, and CI for Python 3.10 through 3.14
+
 ### [Vision Playground](https://github.com/cab0a/vision-playground)
 
 A reproducible collection of OpenCV experiments covering thresholding, parameter sensitivity, denoising, edge detection, and classical segmentation.
