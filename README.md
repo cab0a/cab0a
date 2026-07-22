@@ -46,14 +46,15 @@ schema rules, and applying explicit value mapping, normalization, column-level,
 cross-column, and conditional-presence validation, and deduplication with
 machine-readable audit evidence.
 
-- Current release: [`v0.8.0`](https://github.com/cab0a/data-cleaning-toolkit/releases/tag/v0.8.0)
+- Current release: [`v0.9.0`](https://github.com/cab0a/data-cleaning-toolkit/releases/tag/v0.9.0)
 - Separates structural inspection, conservative schema suggestion, and reviewed schema-driven cleaning
+- Defines a typed public Python API, a versioned cleaning-report contract, and portable SHA-256 verification for 16 reference artifacts
 - Maps reviewed aliases with exact rules and records row-level audit evidence for each applied mapping
 - Summarizes per-column and overall exact mapping coverage while keeping the result distinct from a data-quality score
 - Supports raw, redacted, and disabled unmatched-value summaries with deterministic ordering and explicit disclosure boundaries
 - Validates named equality and ordering relationships between normalized columns
 - Enforces named one-to-one presence dependencies after normalization and records the trigger and target in each failure
-- Includes controlled type, value-mapping, mapping-coverage, unmatched-frequency, privacy-mode, cross-column, and conditional-presence evaluations, deterministic reference outputs, 81 tests, and CI for Python 3.10 through 3.14
+- Includes controlled type, value-mapping, mapping-coverage, unmatched-frequency, privacy-mode, cross-column, conditional-presence, public API, and reproducibility evaluations, deterministic reference outputs, 91 tests, and CI for Python 3.10 through 3.14
 
 ### [Vision Playground](https://github.com/cab0a/vision-playground)
 
