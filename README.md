@@ -34,10 +34,10 @@ Reproducible technical investigations that connect source review and method
 selection to controlled experiments, evaluation, interpretation, and explicit
 limitations.
 
-- Current release: [`v0.9.0`](https://github.com/cab0a/research-notes/releases/tag/v0.9.0)
-- Evaluates JPEG DQT and SOF marker data, numeric-quality portability, explicit quantization-table transfer, entropy-coding differences, and decoded-pixel agreement
-- Audits quality 1–100 and records 1,152 metric observations across four encoder paths, two decoders, three selected qualities, two sampling modes, and four blur levels
-- Includes reusable JPEG codec adapters and marker parsing, seven committed CSV reports, two figures, 38 tests, and full CI reproduction without treating quality numbers as portable perceptual scales
+- Current release: [`v0.10.0`](https://github.com/cab0a/research-notes/releases/tag/v0.10.0)
+- Fixes 12 synthetic baseline JPEG streams and evaluates stream, array-interface, exact-pixel, and bounded numerical contracts across five GitHub-hosted platform profiles
+- Records 120 of 120 exact reference decodes and 60 of 60 exact within-profile OpenCV-versus-Pillow comparisons for the declared corpus and builds
+- Includes fixture and runtime manifests, committed cross-platform CSV reports and figures, 40 tests, and a full CI matrix without treating a code-value bound as a perceptual quality threshold
 
 ### [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit)
 
