@@ -34,10 +34,10 @@ Reproducible technical investigations that connect source review and method
 selection to controlled experiments, evaluation, interpretation, and explicit
 limitations.
 
-- Current release: [`v0.10.0`](https://github.com/cab0a/research-notes/releases/tag/v0.10.0)
-- Fixes 12 synthetic baseline JPEG streams and evaluates stream, array-interface, exact-pixel, and bounded numerical contracts across five GitHub-hosted platform profiles
-- Records 120 of 120 exact reference decodes and 60 of 60 exact within-profile OpenCV-versus-Pillow comparisons for the declared corpus and builds
-- Includes fixture and runtime manifests, committed cross-platform CSV reports and figures, 40 tests, and a full CI matrix without treating a code-value bound as a perceptual quality threshold
+- Current release: [`v0.11.0`](https://github.com/cab0a/research-notes/releases/tag/v0.11.0)
+- Fixes ten synthetic baseline, progressive, restart-marker, grayscale, RGB, and CMYK streams and compares OpenCV, Pillow, and FFmpeg decoder paths across five GitHub-hosted platform profiles
+- Records 150 successful stream and array-interface contracts, 75 pixel-exact matched syntax comparisons, and an FFmpeg 4:2:0 cross-platform hash split isolated to the macOS arm64 profile
+- Includes fixture and runtime manifests, committed cross-platform CSV reports and figures, 42 tests, and a full CI matrix without treating code-value differences as perceptual quality thresholds
 
 ### [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit)
 
