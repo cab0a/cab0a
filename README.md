@@ -58,13 +58,14 @@ machine-readable audit evidence.
 
 ### [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench)
 
-A reproducible machine-learning evaluation project that compares a majority-class baseline with logistic regression on a pinned public dataset.
+A reproducible machine-learning evaluation project that compares controlled classifier baselines on a pinned public dataset.
 
-- Current release: [`v0.2.0`](https://github.com/cab0a/ml-evaluation-workbench/releases/tag/v0.2.0)
-- Compares a deterministic holdout with five shared stratified cross-validation folds while fitting preprocessing inside every training partition
-- Reports fold-level metrics, variability summaries, paired model gains, holdout predictions, a confusion matrix, and a cross-validation score figure
-- Records logistic-regression macro F1 of 0.928 ± 0.041 across the five observed folds without treating the variation as a confidence interval
-- Includes CC0 dataset provenance, five SHA-256-verified reference artifacts, 21 tests, and CI for Python 3.10 through 3.14
+- Current release: [`v0.3.0`](https://github.com/cab0a/ml-evaluation-workbench/releases/tag/v0.3.0)
+- Compares a majority-class dummy, logistic regression, and fixed 5-nearest-neighbors classifier on the same holdout and five stratified folds
+- Fits preprocessing inside every training partition and keeps KNN parameters fixed rather than selecting them from evaluation scores
+- Reports holdout and fold-level metrics, variability summaries, paired differences, row-level predictions, and comparison figures
+- Records KNN macro F1 of 0.949 ± 0.018 versus 0.928 ± 0.041 for logistic regression, while documenting a fold where KNN trails
+- Includes CC0 dataset provenance, six SHA-256-verified reference artifacts, 23 tests, and CI for Python 3.10 through 3.14
 
 ### [Vision Playground](https://github.com/cab0a/vision-playground)
 
