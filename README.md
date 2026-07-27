@@ -1,5 +1,14 @@
 # Python R&D Engineer — Evaluation, Computer Vision, and Point Clouds
 
+## 日本語概要
+
+- Pythonを中心に、コンピュータビジョン、機械学習評価、点群処理、監査可能なデータ処理に取り組んでいます。
+- 再現可能なCLI、定量評価、テスト、CI、生成物の検証、明示的な制約説明を重視しています。
+- 代表3件は、3D評価の `pointcloud-playground`、実用CLIの `data-cleaning-toolkit`、ML評価設計の `ml-evaluation-workbench` です。
+- 画像関連では、入力監査・アルゴリズム比較・研究記録を別リポジトリに分けています。詳細は英語本文を参照してください。
+
+---
+
 I build Python systems for computer-vision experiments, machine-learning
 evaluation, point-cloud processing, and auditable data preparation. The work
 below is designed to be reviewed through runnable CLIs, committed artifacts,
@@ -118,12 +127,3 @@ conclusions.
 Repository code is independently written using open-source software, public
 datasets, and generated fixtures. Each project documents its license and any
 separate data or artifact terms.
-
----
-
-## 日本語概要
-
-- Pythonを中心に、コンピュータビジョン、機械学習評価、点群処理、監査可能なデータ処理に取り組んでいます。
-- 再現可能なCLI、定量評価、テスト、CI、生成物の検証、明示的な制約説明を重視しています。
-- 代表3件は、3D評価の `pointcloud-playground`、実用CLIの `data-cleaning-toolkit`、ML評価設計の `ml-evaluation-workbench` です。
-- 画像関連では、入力監査・アルゴリズム比較・研究記録を別リポジトリに分けています。詳細は英語本文を参照してください。
