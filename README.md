@@ -1,99 +1,129 @@
-# Research and Development Engineer
+# Python R&D Engineer — Evaluation, Computer Vision, and Point Clouds
 
-I build small, reproducible systems for technical investigation and proof-of-concept development using Python.
-
-My work focuses on machine learning, computer vision, image processing, 3D and point-cloud data, data processing, and automation. The emphasis is not only on implementation, but also on selecting an appropriate method, evaluating its behavior, identifying failure conditions, and documenting the result.
-
-## Engineering Workflow
-
-`Research → Method Selection → Prototype → Evaluation → Improvement → Documentation`
-
-This workflow is used to move from an open technical question to a reviewable implementation and evidence-based conclusion.
-
-## Technical Focus
-
-- **Python Development:** command-line tools, data processing, automation, testing, and maintainable package structure
-- **Machine Learning and Computer Vision:** reproducible experiments, image processing, object detection, and method comparison
-- **3D and Point-Cloud Processing:** public-data experiments, geometric processing, analysis, and quantitative evaluation
-- **Technical Investigation:** literature review, method selection, prototype development, and feasibility testing
-- **Evaluation:** metrics, parameter sensitivity, error analysis, benchmarking, and reproducibility
+I build Python systems for computer-vision experiments, machine-learning
+evaluation, point-cloud processing, and auditable data preparation. The work
+below is designed to be reviewed through runnable CLIs, committed artifacts,
+tests, CI, quantitative comparisons, and explicit claim boundaries.
 
 ## Featured Projects
 
-### [Image Dataset Inspector](https://github.com/cab0a/image-dataset-inspector)
-
-A Python and OpenCV CLI that recursively inspects JPEG and PNG datasets, records unreadable files without stopping the scan, and exports dimensions, file size, brightness, contrast, and Laplacian-based blur metrics to CSV.
-
-- Stable sample release: [`v0.1.2`](https://github.com/cab0a/image-dataset-inspector/releases/tag/v0.1.2)
-- Includes generated demo images, checksum-verified public samples, unit tests, and CI
-- Demonstrates input validation and dataset inspection before downstream vision experiments
-
-### [Research Notes](https://github.com/cab0a/research-notes)
-
-Reproducible technical investigations that connect source review and method
-selection to controlled experiments, evaluation, interpretation, and explicit
-limitations.
-
-- Current release: [`v0.11.0`](https://github.com/cab0a/research-notes/releases/tag/v0.11.0)
-- Fixes ten synthetic baseline, progressive, restart-marker, grayscale, RGB, and CMYK streams and compares OpenCV, Pillow, and FFmpeg decoder paths across five GitHub-hosted platform profiles
-- Records 150 successful stream and array-interface contracts, 75 pixel-exact matched syntax comparisons, and an FFmpeg 4:2:0 cross-platform hash split isolated to the macOS arm64 profile
-- Includes fixture and runtime manifests, committed cross-platform CSV reports and figures, 42 tests, and a full CI matrix without treating code-value differences as perceptual quality thresholds
-
-### [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit)
-
-A deterministic Python CLI for inspecting UTF-8 CSV files, drafting reviewable
-schema rules, and applying explicit value mapping, normalization, column-level,
-cross-column, and conditional-presence validation, and deduplication with
-machine-readable audit evidence.
-
-- Stable release: [`v1.0.0`](https://github.com/cab0a/data-cleaning-toolkit/releases/tag/v1.0.0)
-- Separates structural inspection, conservative schema suggestion, and reviewed schema-driven cleaning
-- Defines stable 1.x boundaries for its typed public Python API, CLI contract, and cleaning-report version 1
-- Maps reviewed aliases with exact rules and records row-level audit evidence for each applied mapping
-- Summarizes per-column and overall exact mapping coverage while keeping the result distinct from a data-quality score
-- Supports raw, redacted, and disabled unmatched-value summaries with deterministic ordering and explicit disclosure boundaries
-- Validates named equality and ordering relationships between normalized columns
-- Enforces named one-to-one presence dependencies after normalization and records the trigger and target in each failure
-- Includes controlled type, value-mapping, mapping-coverage, unmatched-frequency, privacy-mode, cross-column, conditional-presence, public API, and reproducibility evaluations, 16 checksum-verified reference artifacts, 94 tests, and CI for Python 3.10 through 3.14
-
-### [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench)
-
-A reproducible machine-learning evaluation project that compares controlled classifier baselines on a pinned public dataset.
-
-- Current release: [`v0.3.0`](https://github.com/cab0a/ml-evaluation-workbench/releases/tag/v0.3.0)
-- Compares a majority-class dummy, logistic regression, and fixed 5-nearest-neighbors classifier on the same holdout and five stratified folds
-- Fits preprocessing inside every training partition and keeps KNN parameters fixed rather than selecting them from evaluation scores
-- Reports holdout and fold-level metrics, variability summaries, paired differences, row-level predictions, and comparison figures
-- Records KNN macro F1 of 0.949 ± 0.018 versus 0.928 ± 0.041 for logistic regression, while documenting a fold where KNN trails
-- Includes CC0 dataset provenance, six SHA-256-verified reference artifacts, 23 tests, and CI for Python 3.10 through 3.14
-
-### [Vision Playground](https://github.com/cab0a/vision-playground)
-
-A reproducible collection of OpenCV experiments covering thresholding, parameter sensitivity, denoising, edge detection, and classical segmentation.
-
-- Stable release: [`v1.0.0`](https://github.com/cab0a/vision-playground/releases/tag/v1.0.0)
-- Five registered experiments and 165 method-condition evaluations
-- Includes synthetic ground truth, a labeled public-data subset, CSV metrics, visual comparisons, tests, CI, and SHA-256 result verification
-- Documents assumptions, failure conditions, valid interpretations, and limitations
+These three repositories provide the shortest review path across 3D research,
+an audit-oriented command-line tool, and machine-learning evaluation design.
 
 ### [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground)
 
-A stable, reproducible point-cloud experiment suite covering voxel downsampling, statistical outlier filtering, local PCA normal estimation, controlled rigid registration, partial-overlap registration, joint overlap-and-outlier sensitivity, and cross-experiment evidence review on synthetic data and a traceable public USGS 3DEP lidar sample.
+Evaluates point-cloud methods against controlled geometry and a traceable USGS
+3DEP sample, so registration, filtering, normal estimation, and downsampling
+can be judged from known transforms, labels, residuals, and recovery error.
 
-- Current release: [`v1.0.0`](https://github.com/cab0a/pointcloud-playground/releases/tag/v1.0.0)
-- Evaluates 48 joint sensitivity conditions per dataset across four overlap levels, four controlled outlier rates, and three correspondence-retention policies
-- Uses known transforms, overlap membership, exact generating pairs, and outlier labels to report correspondence composition, precision and recall, outlier rejection, residuals, transform error, and recovery
-- Demonstrates a controlled effective-valid-pair boundary while keeping experimental findings separate from production parameter recommendations
-- Consolidates fourteen result sets spanning seven experiments and two datasets into a shared review schema without combining incompatible metrics into one score
-- Defines a stable 1.x contract for the top-level Python API, existing CLI, primary output filenames, and CSV schemas
-- Supports non-destructive reference regeneration and verifies two inputs, fifteen CSV reports, one generated Markdown summary, and fifteen figures
-- Includes 68 tests plus sdist, wheel, installation, and CLI checks in CI for Python 3.10 through 3.14
-- Documents API, reproducibility, evidence, limitation, changelog, and stable-release review boundaries
+- **Problem:** method output can look plausible even when correspondences or
+  transforms are wrong.
+- **Technology:** Python, NumPy, SciPy, Matplotlib, XYZ/LAZ-derived point data.
+- **Evaluation design:** seven experiments, synthetic ground truth, controlled
+  overlap and outliers, method-specific metrics, and a shared evidence index
+  that does not combine incompatible results into one score.
+- **Review:** [Quick Start and results](https://github.com/cab0a/pointcloud-playground#quick-start)
 
-## Planned Public Projects
+<a href="https://github.com/cab0a/pointcloud-playground/tree/main/results/joint_sensitivity/synthetic"><img src="https://raw.githubusercontent.com/cab0a/pointcloud-playground/main/results/joint_sensitivity/synthetic/comparison.png" width="560" alt="Joint overlap and outlier sensitivity"></a>
 
-| Project | Scope |
-| --- | --- |
-| `research-to-poc` | Case studies documenting the path from research to prototype and evaluation |
+### [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit)
 
-All public work is based on independently created code, open-source software, public datasets, and public research.
+Inspects UTF-8 CSV files, drafts reviewable schema candidates, and applies
+explicit cleaning rules while preserving row-level and file-level audit
+evidence.
+
+- **Problem:** notebook cleanup often hides which values changed, which rows
+  were rejected, and whether the output can be regenerated.
+- **Technology:** Python standard library, typed package API, JSON schemas,
+  deterministic CSV/JSON output, CLI exit codes.
+- **Design:** inspection, schema suggestion, and rule-driven cleaning remain
+  separate; mapping coverage is reported as an exact-match rate rather than a
+  data-quality score.
+- **Review:** [30-second workflow and committed artifacts](https://github.com/cab0a/data-cleaning-toolkit#quick-start)
+
+```text
+Input rows: 7        Output rows: 3
+Invalid rows: 3      Duplicate rows removed: 1
+Clean CSV: results/demo_clean.csv
+Audit JSON: results/demo_cleaning_report.json
+```
+
+### [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench)
+
+Compares fixed classifier baselines on a checksum-pinned public dataset and
+exports holdout, fold-level, ablation, prediction, and leakage-diagnostic
+evidence.
+
+- **Problem:** a single model score is difficult to interpret without a
+  baseline, shared splits, leakage-aware preprocessing, and inspectable errors.
+- **Technology:** Python, pandas, scikit-learn pipelines, NumPy, Matplotlib.
+- **Evaluation design:** deterministic holdout, shared stratified folds,
+  majority-class baseline, feature ablation, split-integrity checks, and a
+  shuffled-training-label negative control.
+- **Review:** [evaluation methodology and results](https://github.com/cab0a/ml-evaluation-workbench#evaluation-methodology)
+
+<a href="https://github.com/cab0a/ml-evaluation-workbench/tree/main/results"><img src="https://raw.githubusercontent.com/cab0a/ml-evaluation-workbench/main/results/feature_ablation_scores.png" width="560" alt="Feature-ablation macro F1"></a>
+
+## Repository Categories
+
+| Role | Repository | Problem, technology, and reviewable evidence |
+| --- | --- | --- |
+| Audit-oriented data tools | [data-cleaning-toolkit](https://github.com/cab0a/data-cleaning-toolkit) | Rule-driven CSV normalization and validation using the standard library; emits cleaned data, versioned audit JSON, checksums, and documented exit codes. |
+| Audit-oriented data tools | [image-dataset-inspector](https://github.com/cab0a/image-dataset-inspector) | OpenCV CLI for recursive JPEG/PNG inspection; records unreadable files, dimensions, brightness, contrast, and Laplacian variance in a stable CSV inventory. |
+| 3D controlled experiments | [pointcloud-playground](https://github.com/cab0a/pointcloud-playground) | NumPy/SciPy experiments for registration, normals, filtering, and downsampling; evaluates known geometry and a public lidar sample with CSV metrics and comparison figures. |
+| Computer-vision controlled experiments | [vision-playground](https://github.com/cab0a/vision-playground) | Compares thresholding, denoising, edge detection, and classical segmentation using synthetic masks, a labeled public subset, 165 method-condition evaluations, and checksum-verified numeric artifacts. |
+| Machine-learning evaluation | [ml-evaluation-workbench](https://github.com/cab0a/ml-evaluation-workbench) | Evaluates three fixed classifiers with shared holdout and cross-validation splits; exports per-fold scores, row-level predictions, ablations, and leakage diagnostics. |
+| Research record | [research-notes](https://github.com/cab0a/research-notes) | Connects focused image-processing questions to source review, controlled fixtures, experiment code, results, interpretation, and limitations; includes cross-platform JPEG decoder contracts. |
+
+The three image-focused repositories serve different purposes:
+`image-dataset-inspector` audits inputs before analysis, `vision-playground`
+compares algorithms under declared controls, and `research-notes` preserves the
+longer chain from question and sources through experiments and bounded
+conclusions.
+
+## Engineering Principles Demonstrated in the Repositories
+
+- **Controlled evidence:** synthetic ground truth, known transforms, injected
+  labels, fixed public-data revisions, and shared folds make comparisons
+  inspectable.
+- **Reproducible workflows:** installable packages and CLIs regenerate CSV,
+  JSON, Markdown, and figures from committed inputs and configurations.
+- **Audit-friendly artifacts:** row-level predictions, fold-level metrics,
+  cleaning issues, provenance manifests, and checksums expose intermediate
+  evidence rather than only final summaries.
+- **Explicit claim boundaries:** README limitations distinguish controlled
+  behavior from external validity, semantic quality, or deployment claims.
+- **Compatibility as a documented interface:** stable repositories record
+  supported CLI commands, public Python names, output filenames or schemas,
+  and release boundaries.
+- **Verification beyond notebooks:** pytest suites and GitHub Actions exercise
+  supported Python versions; selected workflows also rebuild distributions,
+  install wheels, regenerate artifacts, and compare them with committed
+  references.
+
+## Review Paths
+
+- For **3D geometry and quantitative recovery**, start with
+  [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground).
+- For **CLI, API, validation, and audit design**, start with
+  [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit).
+- For **model comparison and evaluation diagnostics**, start with
+  [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench).
+- For the distinction between **input inspection**, **algorithm experiments**,
+  and **research records**, compare
+  [Image Dataset Inspector](https://github.com/cab0a/image-dataset-inspector),
+  [Vision Playground](https://github.com/cab0a/vision-playground), and
+  [Research Notes](https://github.com/cab0a/research-notes).
+
+Repository code is independently written using open-source software, public
+datasets, and generated fixtures. Each project documents its license and any
+separate data or artifact terms.
+
+---
+
+## 日本語概要
+
+- Pythonを中心に、コンピュータビジョン、機械学習評価、点群処理、監査可能なデータ処理に取り組んでいます。
+- 再現可能なCLI、定量評価、テスト、CI、生成物の検証、明示的な制約説明を重視しています。
+- 代表3件は、3D評価の `pointcloud-playground`、実用CLIの `data-cleaning-toolkit`、ML評価設計の `ml-evaluation-workbench` です。
+- 画像関連では、入力監査・アルゴリズム比較・研究記録を別リポジトリに分けています。詳細は英語本文を参照してください。
