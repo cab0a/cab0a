@@ -10,9 +10,9 @@
 
 | プロジェクト | 解決する問題と技術的な証拠 |
 | --- | --- |
-| [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground#quick-start) | **点群処理を既知の真値で評価。** NumPy・SciPyによる7種類の実験でoverlapとoutlierを制御し、変換誤差、対応点、幾何学的coverageをCSVと比較図へ出力します。 |
-| [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit#quick-start) | **変更内容を追跡できるCSV cleaning。** Python標準ライブラリ、typed API、JSON schema、文書化したexit codeを備え、row単位の変更理由、checksum、決定論的なCSV・JSONを出力します。デモでは7行から3行を出力し、無効3行と重複1行を記録します。 |
-| [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench#evaluation-methodology) | **モデル評価の根拠を保存。** 共通splitで3種類の分類器を比較し、6種類の実験と25件の代表比較からfold-level metrics、row-level predictions、誤分類、評価図、SHA-256 manifestを生成します。CLI、Python API、主要schemaはv1.0で固定しています。 |
+| [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground#quick-start) | **点群処理を既知の真値で評価。**NumPy・SciPyによる7種類の実験でoverlapとoutlierを制御し、変換誤差、対応点、幾何学的coverageをCSVと比較図へ出力します。 |
+| [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit#quick-start) | **変更内容を追跡できるCSV cleaning。**Python標準ライブラリ、typed API、JSON schema、文書化したexit codeを備え、row単位の変更理由、checksum、決定論的なCSV・JSONを出力します。デモでは7行から3行を出力し、無効3行と重複1行を記録します。 |
+| [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench#evaluation-methodology) | **モデル評価の根拠を保存。**共通splitで3種類の分類器を比較し、6種類の実験と25件の代表比較からfold-level metrics、row-level predictions、誤分類、評価図、SHA-256 manifestを生成します。CLI、Python API、主要schemaはv1.0で固定しています。 |
 
 | Point-cloud joint sensitivity | ML feature ablation |
 | --- | --- |
