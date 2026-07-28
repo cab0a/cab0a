@@ -1,13 +1,10 @@
 # Python R&Dエンジニア
 
-機械学習評価、コンピュータビジョン、点群・3Dデータ処理を中心に、
-再現可能な実験基盤と監査可能なPythonツールを実装しています。
+機械学習評価、コンピュータビジョン、点群・3Dデータ処理を中心に、再現可能な実験基盤と監査可能なPythonツールを実装しています。
 
 - **主な領域:** 機械学習評価、画像処理、点群・3Dデータ処理、データ品質確認
-- **開発経験:** 技術調査、要件定義、設計、実装、レビュー、テスト、評価、
-  導入、保守
-- **公開成果物:** CLI、公開API、pytest、GitHub Actions、CSV・JSON、評価図、
-  checksum、監査レポート
+- **開発経験:** 技術調査、要件定義、設計、実装、レビュー、テスト、評価、導入、保守
+- **公開成果物:** CLI、公開API、pytest、GitHub Actions、CSV・JSON、評価図、checksum、監査レポート
 
 ## 代表プロジェクト
 
@@ -23,30 +20,17 @@
 
 ## 画像処理リポジトリの役割
 
-- **入力監査 — [Image Dataset Inspector](https://github.com/cab0a/image-dataset-inspector):**
-  JPEG・PNGを再帰的に検査し、decode error、画像サイズ、brightness、contrast、
-  Laplacian varianceをCSVへ記録します。
-- **手法比較 — [Vision Playground](https://github.com/cab0a/vision-playground):**
-  thresholding、denoising、edge detection、classical segmentationを、
-  synthetic ground truthと公開データで165件のmethod-condition評価にかけます。
-- **研究記録 — [Research Notes](https://github.com/cab0a/research-notes):**
-  research question、source、仮説、実験、結果、考察、limitationsを接続し、
-  cross-platformのJPEG decoder contractも検証しています。
+- **入力監査 — [Image Dataset Inspector](https://github.com/cab0a/image-dataset-inspector):** JPEG・PNGを再帰的に検査し、decode error、画像サイズ、brightness、contrast、Laplacian varianceをCSVへ記録します。
+- **手法比較 — [Vision Playground](https://github.com/cab0a/vision-playground):** thresholding、denoising、edge detection、classical segmentationを、synthetic ground truthと公開データで165件のmethod-condition評価にかけます。
+- **研究記録 — [Research Notes](https://github.com/cab0a/research-notes):** research question、source、仮説、実験、結果、考察、limitationsを接続し、cross-platformのJPEG decoder contractも検証しています。
 
 ## 非公開プロジェクト
 
-機密性のある運用データや継続中の検証条件を含むため、
-以下の個人開発は非公開にしています。
+機密性のある運用データや継続中の検証条件を含むため、以下の個人開発は非公開にしています。
 
-- **時系列データ評価・運用基盤:** raw・cleaned・featuresの分離、DuckDB、
-  品質ゲート、nested walk-forward、確率校正、データリーク防止、
-  CLI、定期実行、稼働監視を実装しています。
-- **仮説検証・意思決定研究ラボ:** 仮説、データ、成功・停止条件、実験、
-  採否判断を接続し、情報源、固定snapshot、schema、scenario、
-  CSV・GeoJSON・レポート・runbookを管理しています。
-- **業務台帳・ワークフロー自動化:** Excel VBAで外部データ取込、
-  既存入力を保持する台帳更新、業務ルールに基づく一覧作成、帳票出力、
-  状態管理、処理ログ、管理者・利用者向け文書を実装しています。
+- **時系列データ評価・運用基盤:** raw・cleaned・featuresの分離、DuckDB、品質ゲート、nested walk-forward、確率校正、データリーク防止、CLI、定期実行、稼働監視を実装しています。
+- **仮説検証・意思決定研究ラボ:** 仮説、データ、成功・停止条件、実験、採否判断を接続し、情報源、固定snapshot、schema、scenario、CSV・GeoJSON・レポート・runbookを管理しています。
+- **業務台帳・ワークフロー自動化:** Excel VBAで外部データ取込、既存入力を保持する台帳更新、業務ルールに基づく一覧作成、帳票出力、状態管理、処理ログ、管理者・利用者向け文書を実装しています。
 
 ## 共通する設計
 
