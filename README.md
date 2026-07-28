@@ -69,7 +69,8 @@ Audit JSON: results/demo_cleaning_report.json
 
 ## 非公開プロジェクト
 
-運用データや継続中の検証条件を含むため、以下の個人開発は非公開にしています。
+機密性のある運用データや継続中の検証条件を含むため、
+以下の個人開発は非公開にしています。
 
 - **時系列データ評価・運用基盤:** raw・cleaned・featuresの分離、DuckDB、
   品質ゲート、nested walk-forward、確率校正、データリーク防止、
@@ -77,6 +78,9 @@ Audit JSON: results/demo_cleaning_report.json
 - **仮説検証・意思決定研究ラボ:** 仮説、データ、成功・停止条件、実験、
   採否判断を接続し、情報源、固定snapshot、schema、scenario、
   CSV・GeoJSON・レポート・runbookを管理しています。
+- **業務台帳・ワークフロー自動化:** Excel VBAで外部データ取込、
+  既存入力を保持する台帳更新、業務ルールに基づく一覧作成、帳票出力、
+  状態管理、処理ログ、管理者・利用者向け文書を実装しています。
 
 ## 共通する設計
 
