@@ -1,54 +1,47 @@
-# Python R&D Engineer — Evaluation, Computer Vision, and Point Clouds
+# Python R&Dエンジニア — 機械学習評価・コンピュータビジョン・点群処理
 
-## 日本語概要
+Pythonを中心に、コンピュータビジョン、機械学習評価、点群処理、監査可能な
+データ処理に取り組んでいます。実験コードだけでなく、再実行できるCLI、
+公開API、pytest、GitHub Actions、定量評価、検証可能な成果物、制約の説明まで
+含めて実装しています。
 
-- Pythonを中心に、コンピュータビジョン、機械学習評価、点群処理、監査可能なデータ処理に取り組んでいます。
-- 再現可能なCLI、定量評価、テスト、CI、生成物の検証、明示的な制約説明を重視しています。
-- 代表3件は、3D評価の `pointcloud-playground`、実用CLIの `data-cleaning-toolkit`、ML評価設計の `ml-evaluation-workbench` です。
-- 画像関連では、入力監査・アルゴリズム比較・研究記録を別リポジトリに分けています。詳細は英語本文を参照してください。
+このプロフィールは日本企業の採用担当者・技術面接官向けの案内です。
+各プロジェクトのREADMEは、冒頭に日本語概要を置き、その後に英語の完全な
+技術文書を掲載しています。
 
----
+## 注目してほしい3プロジェクト
 
-I build Python systems for computer-vision experiments, machine-learning
-evaluation, point-cloud processing, and auditable data preparation. The work
-below is designed to be reviewed through runnable CLIs, committed artifacts,
-tests, CI, quantitative comparisons, and explicit claim boundaries.
-
-## Featured Projects
-
-These three repositories provide the shortest review path across 3D research,
-an audit-oriented command-line tool, and machine-learning evaluation design.
+3D処理の定量評価、監査可能な実用CLI、機械学習の評価設計を短時間で確認できる
+3件です。
 
 ### [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground)
 
-Evaluates point-cloud methods against controlled geometry and a traceable USGS
-3DEP sample, so registration, filtering, normal estimation, and downsampling
-can be judged from known transforms, labels, residuals, and recovery error.
+既知の形状・変換・対応点・ラベルを使い、point-cloud registration、filtering、
+normal estimation、downsamplingを定量評価する実験基盤です。追跡可能な
+USGS 3DEP由来サンプルでも別途確認しています。
 
-- **Problem:** method output can look plausible even when correspondences or
-  transforms are wrong.
-- **Technology:** Python, NumPy, SciPy, Matplotlib, XYZ/LAZ-derived point data.
-- **Evaluation design:** seven experiments, synthetic ground truth, controlled
-  overlap and outliers, method-specific metrics, and a shared evidence index
-  that does not combine incompatible results into one score.
-- **Review:** [Quick Start and results](https://github.com/cab0a/pointcloud-playground#quick-start)
+- **解決する問題:** 見た目では正しく見える点群処理結果でも、対応点、変換、
+  幾何学的coverageが誤っている可能性があります。
+- **主な技術:** Python、NumPy、SciPy、Matplotlib、XYZ/LAZ由来の点群データ。
+- **評価・設計:** 7種類の実験、synthetic ground truth、制御したoverlapと
+  outlier、手法別metrics、性質の異なる結果を単一scoreへ混合しないevidence index。
+- **確認先:** [Quick Startと評価結果](https://github.com/cab0a/pointcloud-playground#quick-start)
 
-<a href="https://github.com/cab0a/pointcloud-playground/tree/main/results/joint_sensitivity/synthetic"><img src="https://raw.githubusercontent.com/cab0a/pointcloud-playground/main/results/joint_sensitivity/synthetic/comparison.png" width="560" alt="Joint overlap and outlier sensitivity"></a>
+<a href="https://github.com/cab0a/pointcloud-playground/tree/main/results/joint_sensitivity/synthetic"><img src="https://raw.githubusercontent.com/cab0a/pointcloud-playground/main/results/joint_sensitivity/synthetic/comparison.png" width="560" alt="Overlapとoutlierのjoint sensitivity"></a>
 
 ### [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit)
 
-Inspects UTF-8 CSV files, drafts reviewable schema candidates, and applies
-explicit cleaning rules while preserving row-level and file-level audit
-evidence.
+UTF-8 CSVの構造を検査し、確認可能なschema候補を作成し、明示的なrulesに
+基づいてcleaningするPython CLIです。row-levelとfile-levelの監査証跡を
+生成します。
 
-- **Problem:** notebook cleanup often hides which values changed, which rows
-  were rejected, and whether the output can be regenerated.
-- **Technology:** Python standard library, typed package API, JSON schemas,
-  deterministic CSV/JSON output, CLI exit codes.
-- **Design:** inspection, schema suggestion, and rule-driven cleaning remain
-  separate; mapping coverage is reported as an exact-match rate rather than a
-  data-quality score.
-- **Review:** [30-second workflow and committed artifacts](https://github.com/cab0a/data-cleaning-toolkit#quick-start)
+- **解決する問題:** notebook内の前処理だけでは、変更された値、除外された行、
+  出力を再生成できる条件が見えにくくなります。
+- **主な技術:** Python標準ライブラリ、typed package API、JSON schema、
+  決定論的なCSV/JSON、文書化されたCLI exit code。
+- **評価・設計:** inspection、schema suggestion、rule-driven cleaningを分離。
+  mapping coverageはdata-quality scoreではなくexact-match rateとして報告します。
+- **確認先:** [30秒で試せる手順と成果物](https://github.com/cab0a/data-cleaning-toolkit#quick-start)
 
 ```text
 Input rows: 7        Output rows: 3
@@ -59,71 +52,66 @@ Audit JSON: results/demo_cleaning_report.json
 
 ### [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench)
 
-Compares fixed classifier baselines on a checksum-pinned public dataset and
-exports holdout, fold-level, ablation, prediction, and leakage-diagnostic
-evidence.
+checksumで固定した公開データと共通splitを使い、3種類のclassifierを比較する
+評価プロジェクトです。holdout、fold-level metrics、row-level predictions、
+ablation、calibration、validation robustness、class-imbalance sensitivityを
+成果物として保存します。
 
-- **Problem:** a single model score is difficult to interpret without a
-  baseline, shared splits, leakage-aware preprocessing, and inspectable errors.
-- **Technology:** Python, pandas, scikit-learn pipelines, NumPy, Matplotlib.
-- **Evaluation design:** deterministic holdout, shared stratified folds,
-  majority-class baseline, feature ablation, split-integrity checks, and a
-  shuffled-training-label negative control.
-- **Review:** [evaluation methodology and results](https://github.com/cab0a/ml-evaluation-workbench#evaluation-methodology)
+- **解決する問題:** 単一のmodel scoreだけでは、baselineとの差、splitの影響、
+  leakage、確率品質、誤分類の内容を判断できません。
+- **主な技術:** Python、pandas、scikit-learn pipelines、NumPy、Matplotlib。
+- **評価・設計:** 6種類の実験から固定方針で25件の代表比較を生成。
+  preprocessingは各training partition内でfitし、shuffled-label negative controlと
+  split-integrity checksを含みます。v1.0ではCLI、Python API、27個の成果物名、
+  15種類のCSV列順、5種類のJSONトップレベルキーを1.x interfaceとして固定しています。
+- **確認先:** [評価方法と結果](https://github.com/cab0a/ml-evaluation-workbench#evaluation-methodology)
 
-<a href="https://github.com/cab0a/ml-evaluation-workbench/tree/main/results"><img src="https://raw.githubusercontent.com/cab0a/ml-evaluation-workbench/main/results/feature_ablation_scores.png" width="560" alt="Feature-ablation macro F1"></a>
+<a href="https://github.com/cab0a/ml-evaluation-workbench/tree/main/results"><img src="https://raw.githubusercontent.com/cab0a/ml-evaluation-workbench/main/results/feature_ablation_scores.png" width="560" alt="Feature ablationのmacro F1"></a>
 
-## Repository Categories
+## リポジトリ一覧
 
-| Role | Repository | Problem, technology, and reviewable evidence |
+| 役割 | リポジトリ | 解決する問題・主な技術・確認できる成果物 |
 | --- | --- | --- |
-| Audit-oriented data tools | [data-cleaning-toolkit](https://github.com/cab0a/data-cleaning-toolkit) | Rule-driven CSV normalization and validation using the standard library; emits cleaned data, versioned audit JSON, checksums, and documented exit codes. |
-| Audit-oriented data tools | [image-dataset-inspector](https://github.com/cab0a/image-dataset-inspector) | OpenCV CLI for recursive JPEG/PNG inspection; records unreadable files, dimensions, brightness, contrast, and Laplacian variance in a stable CSV inventory. |
-| 3D controlled experiments | [pointcloud-playground](https://github.com/cab0a/pointcloud-playground) | NumPy/SciPy experiments for registration, normals, filtering, and downsampling; evaluates known geometry and a public lidar sample with CSV metrics and comparison figures. |
-| Computer-vision controlled experiments | [vision-playground](https://github.com/cab0a/vision-playground) | Compares thresholding, denoising, edge detection, and classical segmentation using synthetic masks, a labeled public subset, 165 method-condition evaluations, and checksum-verified numeric artifacts. |
-| Machine-learning evaluation | [ml-evaluation-workbench](https://github.com/cab0a/ml-evaluation-workbench) | Evaluates three fixed classifiers with shared holdout and cross-validation splits; exports per-fold scores, row-level predictions, ablations, and leakage diagnostics. |
-| Research record | [research-notes](https://github.com/cab0a/research-notes) | Connects focused image-processing questions to source review, controlled fixtures, experiment code, results, interpretation, and limitations; includes cross-platform JPEG decoder contracts. |
+| 監査可能なデータ処理 | [data-cleaning-toolkit](https://github.com/cab0a/data-cleaning-toolkit) | Python標準ライブラリによるrule-drivenなCSV normalizationとvalidation。cleaned data、versioned audit JSON、checksum、exit codeを出力します。 |
+| 画像データセット監査 | [image-dataset-inspector](https://github.com/cab0a/image-dataset-inspector) | JPEG/PNGを再帰的に検査するOpenCV CLI。decode error、画像サイズ、brightness、contrast、Laplacian varianceを安定したCSVへ記録します。 |
+| 3D・点群処理 | [pointcloud-playground](https://github.com/cab0a/pointcloud-playground) | registration、normal estimation、filtering、downsamplingを既知の幾何条件と公開lidarサンプルで評価し、CSV metricsと比較図を生成します。 |
+| コンピュータビジョン実験 | [vision-playground](https://github.com/cab0a/vision-playground) | thresholding、denoising、edge detection、classical segmentationをsynthetic maskとラベル付き公開データで比較。165件のmethod-condition evaluationとchecksum検証済み成果物を含みます。 |
+| 機械学習評価 | [ml-evaluation-workbench](https://github.com/cab0a/ml-evaluation-workbench) | 3種類のclassifierを共通holdout・cross-validation splitで比較。6種類の実験、25件の代表比較、fold-level score、row-level prediction、安定化された成果物contractを含みます。 |
+| 研究記録 | [research-notes](https://github.com/cab0a/research-notes) | 画像処理のresearch question、source review、controlled fixture、実験コード、結果、考察、limitationsを接続。cross-platform JPEG decoder contractも検証しています。 |
 
-The three image-focused repositories serve different purposes:
-`image-dataset-inspector` audits inputs before analysis, `vision-playground`
-compares algorithms under declared controls, and `research-notes` preserves the
-longer chain from question and sources through experiments and bounded
-conclusions.
+画像関連の3件は役割を分けています。`image-dataset-inspector` は実験前の入力監査、
+`vision-playground` は宣言した条件下でのalgorithm comparison、`research-notes` は
+research questionとsourceから実験、解釈、主張できる範囲までの記録です。
 
-## Engineering Principles Demonstrated in the Repositories
+## 複数リポジトリで確認できる設計原則
 
-- **Controlled evidence:** synthetic ground truth, known transforms, injected
-  labels, fixed public-data revisions, and shared folds make comparisons
-  inspectable.
-- **Reproducible workflows:** installable packages and CLIs regenerate CSV,
-  JSON, Markdown, and figures from committed inputs and configurations.
-- **Audit-friendly artifacts:** row-level predictions, fold-level metrics,
-  cleaning issues, provenance manifests, and checksums expose intermediate
-  evidence rather than only final summaries.
-- **Explicit claim boundaries:** README limitations distinguish controlled
-  behavior from external validity, semantic quality, or deployment claims.
-- **Compatibility as a documented interface:** stable repositories record
-  supported CLI commands, public Python names, output filenames or schemas,
-  and release boundaries.
-- **Verification beyond notebooks:** pytest suites and GitHub Actions exercise
-  supported Python versions; selected workflows also rebuild distributions,
-  install wheels, regenerate artifacts, and compare them with committed
-  references.
+- **制御された評価:** synthetic ground truth、既知の変換、注入したラベル、
+  固定した公開データrevision、共通foldにより比較条件を確認できます。
+- **再現可能なworkflow:** installable packageとCLIから、committed inputと設定を使って
+  CSV、JSON、Markdown、figureを再生成できます。
+- **監査可能な成果物:** row-level prediction、fold-level metrics、cleaning issue、
+  provenance manifest、checksumを保存し、最終summaryだけでなく途中の根拠も確認できます。
+- **主張範囲の明示:** controlled experimentの結果と、external validity、
+  semantic quality、deployment readinessを区別してlimitationsを記録しています。
+- **互換性の文書化:** 安定版では、CLI command、public Python name、主要な
+  output filename・schema、release boundaryをinterfaceとして明示しています。
+- **notebook以外の検証:** pytestとGitHub Actionsで対応Python versionを検証。
+  一部ではdistributionのbuild、wheel install、成果物の再生成、committed referenceとの
+  比較までCIで実行しています。
 
-## Review Paths
+## 採用担当者・技術面接官向けの確認順
 
-- For **3D geometry and quantitative recovery**, start with
-  [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground).
-- For **CLI, API, validation, and audit design**, start with
-  [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit).
-- For **model comparison and evaluation diagnostics**, start with
-  [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench).
-- For the distinction between **input inspection**, **algorithm experiments**,
-  and **research records**, compare
-  [Image Dataset Inspector](https://github.com/cab0a/image-dataset-inspector),
-  [Vision Playground](https://github.com/cab0a/vision-playground), and
-  [Research Notes](https://github.com/cab0a/research-notes).
+- **3D geometryと定量的なrecovery error**:
+  [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground)
+- **CLI、API、validation、監査設計**:
+  [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit)
+- **model comparisonと評価diagnostics**:
+  [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench)
+- **input inspection、algorithm experiment、research recordの違い**:
+  [Image Dataset Inspector](https://github.com/cab0a/image-dataset-inspector)、
+  [Vision Playground](https://github.com/cab0a/vision-playground)、
+  [Research Notes](https://github.com/cab0a/research-notes)
 
-Repository code is independently written using open-source software, public
-datasets, and generated fixtures. Each project documents its license and any
-separate data or artifact terms.
+各リポジトリのコードは、open-source software、公開データ、生成したfixtureを使って
+独立に作成しています。licenseとデータ・成果物に別条件がある場合は、各リポジトリで
+明示しています。
