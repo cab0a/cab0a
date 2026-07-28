@@ -11,49 +11,15 @@
 
 ## 代表プロジェクト
 
-### [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground) — 点群処理を既知の真値で評価
+| プロジェクト | 解決する問題と技術的な証拠 |
+| --- | --- |
+| [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground#quick-start) | **点群処理を既知の真値で評価。** NumPy・SciPyによる7種類の実験でoverlapとoutlierを制御し、変換誤差、対応点、幾何学的coverageをCSVと比較図へ出力します。 |
+| [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit#quick-start) | **変更内容を追跡できるCSV cleaning。** Python標準ライブラリ、typed API、JSON schema、文書化したexit codeを備え、row単位の変更理由、checksum、決定論的なCSV・JSONを出力します。デモでは7行から3行を出力し、無効3行と重複1行を記録します。 |
+| [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench#evaluation-methodology) | **モデル評価の根拠を保存。** 共通splitで3種類の分類器を比較し、6種類の実験と25件の代表比較からfold-level metrics、row-level predictions、誤分類、評価図、SHA-256 manifestを生成します。CLI、Python API、主要schemaはv1.0で固定しています。 |
 
-位置合わせ、外れ値除去、法線推定、downsamplingを、既知の変換・対応点・
-ラベルを使って評価する実験基盤です。
-
-- **実装:** NumPy・SciPyによる7種類の実験と、追跡可能なUSGS 3DEP由来サンプル
-- **評価:** overlapとoutlierを制御し、変換誤差、対応点、幾何学的coverageを測定
-- **成果物:** 条件別CSV metrics、比較図、再生成用CLI
-
-[Quick Startと評価結果](https://github.com/cab0a/pointcloud-playground#quick-start)
-
-<a href="https://github.com/cab0a/pointcloud-playground/tree/main/results/joint_sensitivity/synthetic"><img src="https://raw.githubusercontent.com/cab0a/pointcloud-playground/main/results/joint_sensitivity/synthetic/comparison.png" width="560" alt="Overlapとoutlierのjoint sensitivity"></a>
-
-### [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit) — 変更内容を追跡できるCSV cleaning
-
-CSVの構造確認、schema候補の作成、明示的なrulesによるcleaningを分離した
-Python CLIです。
-
-- **実装:** Python標準ライブラリ、typed API、JSON schema、文書化されたexit code
-- **監査:** 変更・除外理由をrow単位で記録し、決定論的なCSV・JSONとchecksumを出力
-
-```text
-Input rows: 7        Output rows: 3
-Invalid rows: 3      Duplicate rows removed: 1
-Clean CSV: results/demo_clean.csv
-Audit JSON: results/demo_cleaning_report.json
-```
-
-[Quick Startと成果物](https://github.com/cab0a/data-cleaning-toolkit#quick-start)
-
-### [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench) — モデル評価の根拠を残す
-
-固定した公開データと共通splitを使い、3種類の分類器を同じ条件で比較する
-評価プロジェクトです。
-
-- **評価:** baseline、feature ablation、calibration、validation robustness、
-  class-imbalance sensitivityを含む6種類の実験と25件の代表比較
-- **成果物:** fold-level metrics、row-level predictions、誤分類、評価図、SHA-256 manifest
-- **互換性:** v1.0でCLI、Python API、主要な成果物名とschemaを1.x interfaceとして固定
-
-[評価方法と結果](https://github.com/cab0a/ml-evaluation-workbench#evaluation-methodology)
-
-<a href="https://github.com/cab0a/ml-evaluation-workbench/tree/main/results"><img src="https://raw.githubusercontent.com/cab0a/ml-evaluation-workbench/main/results/feature_ablation_scores.png" width="560" alt="Feature ablationのmacro F1"></a>
+| Point-cloud joint sensitivity | ML feature ablation |
+| --- | --- |
+| <a href="https://github.com/cab0a/pointcloud-playground/tree/main/results/joint_sensitivity/synthetic"><img src="https://raw.githubusercontent.com/cab0a/pointcloud-playground/main/results/joint_sensitivity/synthetic/comparison.png" width="400" alt="Overlapとoutlierのjoint sensitivity"></a> | <a href="https://github.com/cab0a/ml-evaluation-workbench/tree/main/results"><img src="https://raw.githubusercontent.com/cab0a/ml-evaluation-workbench/main/results/feature_ablation_scores.png" width="400" alt="Feature ablationのmacro F1"></a> |
 
 ## 画像処理リポジトリの役割
 
