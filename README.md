@@ -67,6 +67,17 @@ Audit JSON: results/demo_cleaning_report.json
   research question、source、仮説、実験、結果、考察、limitationsを接続し、
   cross-platformのJPEG decoder contractも検証しています。
 
+## 非公開プロジェクト
+
+運用データや継続中の検証条件を含むため、以下の個人開発は非公開にしています。
+
+- **時系列データ評価・運用基盤:** raw・cleaned・featuresの分離、DuckDB、
+  品質ゲート、nested walk-forward、確率校正、データリーク防止、
+  CLI、定期実行、稼働監視を実装しています。
+- **仮説検証・意思決定研究ラボ:** 仮説、データ、成功・停止条件、実験、
+  採否判断を接続し、情報源、固定snapshot、schema、scenario、
+  CSV・GeoJSON・レポート・runbookを管理しています。
+
 ## 共通する設計
 
 - **再現性:** commit済みの入力と設定から、CLIで数値成果物と図を再生成
