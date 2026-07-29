@@ -485,6 +485,75 @@ def check_japanese_summary(
             )
 
 
+def check_english_summary(
+    repository: str,
+    repository_path: Path,
+    markdown_path: Path,
+    text: str,
+    findings: list[Finding],
+) -> None:
+    location = str(markdown_path.relative_to(repository_path))
+    lines = text.splitlines()
+    positions = [
+        index for index, line in enumerate(lines) if line == "## English Summary"
+    ]
+
+    if len(positions) != 1:
+        display_positions = ", ".join(str(index + 1) for index in positions) or "none"
+        findings.append(
+            Finding(
+                "FAIL",
+                repository,
+                location,
+                "`## English Summary` must appear exactly once in non-README "
+                f"Markdown; found {display_positions}",
+            )
+        )
+        return
+
+    try:
+        japanese_position = lines.index("## 日本語概要")
+        rule_index = lines.index("---", japanese_position + 1)
+    except ValueError:
+        return
+
+    first_content_index = rule_index + 1
+    while (
+        first_content_index < len(lines)
+        and not lines[first_content_index].strip()
+    ):
+        first_content_index += 1
+
+    if positions[0] != first_content_index:
+        findings.append(
+            Finding(
+                "FAIL",
+                repository,
+                location,
+                "`## English Summary` must be the first English section after "
+                "the Japanese summary separator",
+            )
+        )
+
+    section_end = len(lines)
+    for index in range(positions[0] + 1, len(lines)):
+        if lines[index].startswith("## "):
+            section_end = index
+            break
+
+    summary_text = "\n".join(lines[positions[0] + 1 : section_end])
+    word_count = len(re.findall(r"\b[A-Za-z][A-Za-z0-9'-]*\b", summary_text))
+    if not 12 <= word_count <= 120:
+        findings.append(
+            Finding(
+                "FAIL",
+                repository,
+                location,
+                f"English summary contains {word_count} words; expected 12–120",
+            )
+        )
+
+
 def check_project_readme(
     repository: str, text: str, findings: list[Finding]
 ) -> None:
@@ -800,6 +869,14 @@ def check_repository(
                     and markdown_path == root_readme
                 ),
             )
+            if markdown_path.name != "README.md":
+                check_english_summary(
+                    repository,
+                    repository_path,
+                    markdown_path,
+                    markdown_text,
+                    findings,
+                )
 
         check_common_text_quality(
             repository, repository_path, markdown_path, markdown_text, findings

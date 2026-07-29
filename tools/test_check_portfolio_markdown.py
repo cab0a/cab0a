@@ -6,6 +6,7 @@ import unittest
 from check_portfolio_markdown import (
     Finding,
     check_common_text_quality,
+    check_english_summary,
     check_japanese_summary,
 )
 
@@ -98,6 +99,61 @@ class JapaneseSummaryTests(unittest.TestCase):
         findings = self.findings_for(text)
         self.assertTrue(
             any("hard-wrapped" in finding.message for finding in findings)
+        )
+
+
+class EnglishSummaryTests(unittest.TestCase):
+    def findings_for(self, text: str) -> list[Finding]:
+        findings: list[Finding] = []
+        check_english_summary(
+            REPOSITORY,
+            REPOSITORY_PATH,
+            MARKDOWN_PATH,
+            text,
+            findings,
+        )
+        return findings
+
+    def test_accepts_first_section_after_separator(self) -> None:
+        text = (
+            "# Example\n\n"
+            "## 日本語概要\n\n"
+            "概要の詳細は以下の英語本文を参照してください。\n\n"
+            "---\n\n"
+            "## English Summary\n\n"
+            "This summary explains the document purpose, evidence, boundaries, "
+            "and verification method in concise technical English.\n\n"
+            "## Details\n"
+        )
+        self.assertEqual(self.findings_for(text), [])
+
+    def test_rejects_missing_english_summary(self) -> None:
+        text = (
+            "# Example\n\n"
+            "## 日本語概要\n\n"
+            "概要の詳細は以下の英語本文を参照してください。\n\n"
+            "---\n\n"
+            "English text.\n"
+        )
+        findings = self.findings_for(text)
+        self.assertTrue(
+            any("must appear exactly once" in finding.message for finding in findings)
+        )
+
+    def test_rejects_late_english_summary(self) -> None:
+        text = (
+            "# Example\n\n"
+            "## 日本語概要\n\n"
+            "概要の詳細は以下の英語本文を参照してください。\n\n"
+            "---\n\n"
+            "## Details\n\n"
+            "## English Summary\n\n"
+            "This summary explains the document purpose, evidence, boundaries, "
+            "and verification method in concise technical English.\n"
+        )
+        findings = self.findings_for(text)
+        self.assertTrue(
+            any("first English section" in finding.message for finding in findings)
         )
 
 

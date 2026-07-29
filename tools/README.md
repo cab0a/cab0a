@@ -2,7 +2,7 @@
 
 ## 日本語概要
 
-この検査は、プロフィールと6つの公開プロジェクトにある全Markdownを対象に、日本語概要、UTF-8、文字化けの兆候、日本語間の不要な半角空白、マージ競合記号、ローカルリンクを確認します。プロジェクトのルートREADMEだけは、主要セクションや代表結果などの構造も追加で検査します。
+この検査は、プロフィールと6つの公開プロジェクトにある全Markdownを対象に、日本語概要、README以外の英語概要、UTF-8、文字化けの兆候、日本語間の不要な半角空白、マージ競合記号、ローカルリンクを確認します。プロジェクトのルートREADMEだけは、主要セクションや代表結果などの構造も追加で検査します。
 
 GitHub Actionsで毎日実行する方法とローカル実行の詳細は以下の英語本文を参照してください。
 
@@ -21,6 +21,8 @@ Every tracked or unignored Markdown file is checked for:
 - unnecessary ASCII spaces between Japanese characters;
 - exactly one Japanese summary after the top-level title, except for the
   complete Japanese profile README;
+- exactly one `English Summary` immediately after the Japanese separator in
+  every Markdown file not named `README.md`;
 - balanced code fences;
 - working local files, images, and heading anchors;
 - machine-specific absolute paths.
