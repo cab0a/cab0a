@@ -10,16 +10,17 @@
 
 | プロジェクト | 解決する問題と技術的な証拠 |
 | --- | --- |
+| [Few-Shot Anomaly PoC](https://github.com/cab0a/few-shot-anomaly-poc#quick-start) | <strong>少数例の異常検知を採否判定まで検証。</strong>正常画像20枚以内・CPU実行・異常ラベルを学習に使わない条件で2手法を比較し、事前固定した誤検知率・再現率・処理時間の基準により両手法を却下しました。ラベル開示前のスコア、誤検知・見逃し、処理時間、判定、SHA-256付き成果物を保存しています。 |
 | [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground#quick-start) | <strong>点群処理を既知の真値で評価。</strong>NumPy・SciPyによる7種類の実験で重なり率と外れ値率を制御し、変換誤差、対応点精度、幾何学的被覆をCSVと比較図へ出力します。 |
 | [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit#quick-start) | <strong>変更内容を追跡できるCSV整形。</strong>Python標準ライブラリ、型付きPython API、JSONスキーマ、文書化した終了コードを備え、行単位の変更理由、SHA-256、同じ入力から同じ内容を生成するCSV・JSONを出力します。デモでは7行から3行を出力し、無効3行と重複1行を記録します。 |
-| [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench#evaluation-design) | <strong>モデル評価の根拠を保存。</strong>共通のデータ分割で3種類の分類器を比較し、6種類の実験と25件の代表比較から分割ごとの評価指標、行単位の予測、誤分類、評価図、SHA-256一覧を生成します。CLI、Python API、主要な成果物仕様はv1.0で固定しています。 |
 
-| 点群の同時感度分析 | 特徴量除去比較 |
+| 異常検知の固定基準評価 | 点群の同時感度分析 |
 | --- | --- |
-| <a href="https://github.com/cab0a/pointcloud-playground/tree/main/results/joint_sensitivity/synthetic"><img src="https://raw.githubusercontent.com/cab0a/pointcloud-playground/main/results/joint_sensitivity/synthetic/comparison.png" width="400" alt="重なり率と外れ値率の同時感度"></a> | <a href="https://github.com/cab0a/ml-evaluation-workbench/tree/main/results"><img src="https://raw.githubusercontent.com/cab0a/ml-evaluation-workbench/main/results/feature_ablation_scores.png" width="400" alt="特徴量除去比較のマクロF1"></a> |
+| <a href="https://github.com/cab0a/few-shot-anomaly-poc/tree/main/docs/assets"><img src="https://raw.githubusercontent.com/cab0a/few-shot-anomaly-poc/main/docs/assets/v0.1-gate-summary.svg" width="400" alt="異常検知二手法の固定基準に対する評価結果"></a> | <a href="https://github.com/cab0a/pointcloud-playground/tree/main/results/joint_sensitivity/synthetic"><img src="https://raw.githubusercontent.com/cab0a/pointcloud-playground/main/results/joint_sensitivity/synthetic/comparison.png" width="400" alt="重なり率と外れ値率の同時感度"></a> |
 
-## 画像処理リポジトリの役割
+## その他の公開プロジェクト
 
+- **モデル評価 — [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench):** 共通のデータ分割で3種類の分類器を比較し、6種類の実験と25件の代表比較から分割ごとの評価指標、行単位の予測、誤分類、評価図、SHA-256一覧を生成します。
 - **入力監査 — [Image Dataset Inspector](https://github.com/cab0a/image-dataset-inspector):** JPEG・PNGを再帰的に検査し、読み込みエラー、画像サイズ、明るさ、コントラスト、ラプラシアン分散をCSVへ記録します。
 - **手法比較 — [Vision Playground](https://github.com/cab0a/vision-playground):** 二値化、ノイズ除去、輪郭検出、古典的な画像分割を、正解データ付きの合成画像と公開画像で165件の手法・条件評価にかけます。
 - **研究記録 — [Research Notes](https://github.com/cab0a/research-notes):** 15件の研究で課題、文献、仮説、実験、結果、考察、制約を接続し、最新研究ではJPEGメタデータ方針を最大10世代まで反復し、5環境の3,300観測からメタデータ状態、圧縮画像、完全ファイル、復号画素の安定性を分けて評価しています。
