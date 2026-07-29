@@ -37,6 +37,10 @@ JAPANESE_INTERNAL_SPACE_RE = re.compile(
 CONFLICT_MARKER_RE = re.compile(
     r"^(?:<<<<<<<(?: .*)?|=======|>>>>>>>(?: .*)?)$", re.MULTILINE
 )
+STATUS_BADGE_RE = re.compile(
+    r"(?:badge\.svg|https?://(?:img\.)?shields\.io/)",
+    re.IGNORECASE,
+)
 MOJIBAKE_PATTERNS = (
     (
         "Unicode replacement character",
@@ -265,6 +269,17 @@ def check_common_text_quality(
                 repository,
                 f"{location}:{line_number(text, conflict_match.start())}",
                 f"unresolved merge-conflict marker: {conflict_match.group(0)!r}",
+            )
+        )
+
+    badge_match = STATUS_BADGE_RE.search(text)
+    if badge_match:
+        findings.append(
+            Finding(
+                "FAIL",
+                repository,
+                f"{location}:{line_number(text, badge_match.start())}",
+                "status badges are not used in portfolio Markdown",
             )
         )
 

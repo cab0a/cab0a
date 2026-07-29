@@ -45,6 +45,19 @@ class CommonTextQualityTests(unittest.TestCase):
             any("merge-conflict marker" in finding.message for finding in findings)
         )
 
+    def test_rejects_status_badge(self) -> None:
+        text = (
+            "[![CI](https://github.com/example/project/actions/workflows/"
+            "ci.yml/badge.svg)](https://github.com/example/project/actions)\n"
+        )
+        findings = self.findings_for(text)
+        self.assertTrue(
+            any(
+                "status badges are not used" in finding.message
+                for finding in findings
+            )
+        )
+
     def test_rejects_replacement_character(self) -> None:
         findings = self.findings_for("broken \ufffd text")
         self.assertTrue(
