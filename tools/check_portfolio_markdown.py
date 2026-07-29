@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 import re
 import subprocess
 import sys
@@ -16,6 +18,7 @@ from urllib.parse import unquote, urlparse
 DEFAULT_WORKSPACE = Path(__file__).resolve().parents[2]
 PROFILE_REPOSITORY = "cab0a"
 PROJECT_REPOSITORIES = (
+    "few-shot-anomaly-poc",
     "pointcloud-playground",
     "data-cleaning-toolkit",
     "ml-evaluation-workbench",
@@ -24,7 +27,11 @@ PROJECT_REPOSITORIES = (
     "research-notes",
 )
 ALL_REPOSITORIES = (PROFILE_REPOSITORY, *PROJECT_REPOSITORIES)
-FEATURED_REPOSITORIES = set(PROJECT_REPOSITORIES[:3])
+FEATURED_REPOSITORIES = {
+    "few-shot-anomaly-poc",
+    "pointcloud-playground",
+    "data-cleaning-toolkit",
+}
 
 INLINE_LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)\n]+)\)")
 HTML_LINK_RE = re.compile(r"""(?:href|src)=["']([^"']+)["']""", re.IGNORECASE)
@@ -93,6 +100,9 @@ IGNORED_DIRECTORIES = {
     "output",
     "regenerated-results",
 }
+FEW_SHOT_FREEZE_RECORD = Path(
+    "artifacts/v0.1/freeze/pre-evaluation-freeze.json"
+)
 
 
 @dataclass(frozen=True)
@@ -114,7 +124,7 @@ def parse_arguments() -> argparse.Namespace:
         "repositories",
         nargs="*",
         choices=ALL_REPOSITORIES,
-        help="Repository names to check. The default is all seven repositories.",
+        help="Repository names to check. The default is all eight repositories.",
     )
     parser.add_argument(
         "--workspace",
@@ -170,6 +180,69 @@ def markdown_files(repository_path: Path) -> list[Path]:
             continue
         files.append(path)
     return sorted(files)
+
+
+def verified_summary_exemptions(
+    repository: str,
+    repository_path: Path,
+    findings: list[Finding],
+) -> set[Path]:
+    """Return immutable historical Markdown whose recorded bytes still match."""
+    if repository != "few-shot-anomaly-poc":
+        return set()
+
+    record_path = repository_path / FEW_SHOT_FREEZE_RECORD
+    try:
+        record = json.loads(record_path.read_text(encoding="utf-8"))
+        frozen_files = record["frozen_files"]
+    except (FileNotFoundError, UnicodeDecodeError, json.JSONDecodeError, KeyError) as error:
+        findings.append(
+            Finding(
+                "FAIL",
+                repository,
+                str(FEW_SHOT_FREEZE_RECORD),
+                f"could not read the pre-evaluation freeze record: {error}",
+            )
+        )
+        return set()
+
+    exemptions: set[Path] = set()
+    for item in frozen_files:
+        if not isinstance(item, dict):
+            continue
+        relative_path = item.get("relative_path")
+        expected_sha256 = item.get("sha256")
+        if (
+            not isinstance(relative_path, str)
+            or not relative_path.endswith(".md")
+            or not isinstance(expected_sha256, str)
+        ):
+            continue
+        markdown_path = repository_path / relative_path
+        try:
+            observed_sha256 = hashlib.sha256(markdown_path.read_bytes()).hexdigest()
+        except OSError as error:
+            findings.append(
+                Finding(
+                    "FAIL",
+                    repository,
+                    relative_path,
+                    f"could not verify frozen Markdown: {error}",
+                )
+            )
+            continue
+        if observed_sha256 != expected_sha256:
+            findings.append(
+                Finding(
+                    "FAIL",
+                    repository,
+                    relative_path,
+                    "frozen Markdown no longer matches its pre-evaluation SHA-256",
+                )
+            )
+            continue
+        exemptions.add(markdown_path.resolve())
+    return exemptions
 
 
 def read_markdown(
@@ -707,8 +780,8 @@ def check_profile(text: str, findings: list[Finding]) -> None:
                     "FAIL",
                     PROFILE_REPOSITORY,
                     "README.md",
-                    "Featured Projects must contain exactly pointcloud-playground, "
-                    "data-cleaning-toolkit, and ml-evaluation-workbench",
+                    "Featured Projects must contain exactly few-shot-anomaly-poc, "
+                    "pointcloud-playground, and data-cleaning-toolkit",
                 )
             )
 
@@ -906,6 +979,11 @@ def check_repository(
         check_markdown_workflow(repository, repository_path, findings)
 
     files = markdown_files(repository_path)
+    summary_exemptions = verified_summary_exemptions(
+        repository,
+        repository_path,
+        findings,
+    )
     texts: dict[Path, str] = {}
     for markdown_path in files:
         markdown_text = read_markdown(
@@ -936,7 +1014,7 @@ def check_repository(
         is_profile_readme = (
             repository == PROFILE_REPOSITORY and markdown_path == root_readme
         )
-        if not is_profile_readme:
+        if not is_profile_readme and markdown_path.resolve() not in summary_exemptions:
             check_japanese_summary(
                 repository,
                 repository_path,

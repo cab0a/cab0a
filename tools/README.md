@@ -2,7 +2,7 @@
 
 ## 日本語概要
 
-この検査は、プロフィールと6つの公開プロジェクトにある全Markdownを対象に、日本語概要、README以外の英語概要、UTF-8、文字化けの兆候、日本語間の不要な半角空白、マージ競合記号、ステータスバッジ、ローカルリンクを確認します。Markdownの変更時には対象リポジトリを即時検査し、毎日1回はポートフォリオ全体を検査します。プロジェクトのルートREADMEだけは、主要セクションや代表結果などの構造も追加で検査します。
+この検査は、プロフィールと7つの公開プロジェクトにある全Markdownを対象に、日本語概要、README以外の英語概要、UTF-8、文字化けの兆候、日本語間の不要な半角空白、マージ競合記号、ステータスバッジ、ローカルリンクを確認します。Markdownの変更時には対象リポジトリを即時検査し、毎日1回はポートフォリオ全体を検査します。プロジェクトのルートREADMEだけは、主要セクションや代表結果などの構造も追加で検査します。
 
 GitHub Actionsで毎日実行する方法とローカル実行の詳細は以下の英語本文を参照してください。
 
@@ -29,6 +29,12 @@ Every tracked or unignored Markdown file is checked for:
 - working local files, images, and heading anchors;
 - machine-specific absolute paths.
 
+The preregistered Markdown files listed in
+`few-shot-anomaly-poc/artifacts/v0.1/freeze/pre-evaluation-freeze.json` keep
+their original English-only bytes. The validator exempts them from summary
+headings only while each file still matches its recorded SHA-256; all common
+text and link checks still apply.
+
 The root README of each project receives additional checks for its overview,
 representative evidence, Quick Start, artifacts, evaluation boundaries,
 reproducibility, development, compatibility, and license sections. These
@@ -40,7 +46,7 @@ and pull-request path filters, and its invocation of the shared validator.
 
 ## Local Run
 
-Run from a workspace that contains the profile and all six project
+Run from a workspace that contains the profile and all seven project
 repositories:
 
 ```bash
@@ -60,7 +66,7 @@ exit code `2`.
 ## Scheduled Verification
 
 [`portfolio-markdown.yml`](../.github/workflows/portfolio-markdown.yml) checks
-out this profile repository, clones the six public projects, and runs the same
+out this profile repository, clones the seven public projects, and runs the same
 script every day at 00:00 UTC. It also supports manual execution and runs when
 the validator, workflow, or profile README changes.
 

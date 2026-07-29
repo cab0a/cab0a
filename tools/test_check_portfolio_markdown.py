@@ -2,20 +2,109 @@
 
 from pathlib import Path
 from tempfile import TemporaryDirectory
+import hashlib
+import json
 import unittest
 
 from check_portfolio_markdown import (
+    FEATURED_REPOSITORIES,
     Finding,
+    PROJECT_REPOSITORIES,
     check_common_text_quality,
     check_english_summary,
     check_japanese_summary,
     check_markdown_workflow,
+    verified_summary_exemptions,
 )
 
 
 REPOSITORY = "example"
 REPOSITORY_PATH = Path("/workspace/example")
 MARKDOWN_PATH = REPOSITORY_PATH / "docs" / "example.md"
+
+
+class PortfolioInventoryTests(unittest.TestCase):
+    def test_seven_projects_are_validated(self) -> None:
+        self.assertEqual(len(PROJECT_REPOSITORIES), 7)
+        self.assertIn("few-shot-anomaly-poc", PROJECT_REPOSITORIES)
+
+    def test_featured_projects_match_profile_selection(self) -> None:
+        self.assertEqual(
+            FEATURED_REPOSITORIES,
+            {
+                "few-shot-anomaly-poc",
+                "pointcloud-playground",
+                "data-cleaning-toolkit",
+            },
+        )
+
+
+class FrozenMarkdownExemptionTests(unittest.TestCase):
+    def _repository(self, root: Path, content: str) -> Path:
+        repository = root / "few-shot-anomaly-poc"
+        document = repository / "docs/evaluation-plan.md"
+        document.parent.mkdir(parents=True)
+        document.write_text(content, encoding="utf-8")
+        record = repository / "artifacts/v0.1/freeze/pre-evaluation-freeze.json"
+        record.parent.mkdir(parents=True)
+        record.write_text(
+            json.dumps(
+                {
+                    "frozen_files": [
+                        {
+                            "relative_path": "docs/evaluation-plan.md",
+                            "sha256": hashlib.sha256(document.read_bytes()).hexdigest(),
+                        }
+                    ]
+                }
+            ),
+            encoding="utf-8",
+        )
+        return repository
+
+    def test_accepts_exact_frozen_markdown_without_summary(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            repository = self._repository(
+                Path(temporary_directory),
+                "# Evaluation Plan\n\nOriginal preregistered text.\n",
+            )
+            findings: list[Finding] = []
+
+            exemptions = verified_summary_exemptions(
+                "few-shot-anomaly-poc",
+                repository,
+                findings,
+            )
+
+            self.assertEqual(
+                exemptions,
+                {(repository / "docs/evaluation-plan.md").resolve()},
+            )
+            self.assertEqual(findings, [])
+
+    def test_rejects_changed_frozen_markdown(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            repository = self._repository(
+                Path(temporary_directory),
+                "# Evaluation Plan\n\nOriginal preregistered text.\n",
+            )
+            document = repository / "docs/evaluation-plan.md"
+            document.write_text(
+                "# Evaluation Plan\n\nChanged after the freeze.\n",
+                encoding="utf-8",
+            )
+            findings: list[Finding] = []
+
+            exemptions = verified_summary_exemptions(
+                "few-shot-anomaly-poc",
+                repository,
+                findings,
+            )
+
+            self.assertEqual(exemptions, set())
+            self.assertTrue(
+                any("pre-evaluation SHA-256" in finding.message for finding in findings)
+            )
 
 
 class CommonTextQualityTests(unittest.TestCase):

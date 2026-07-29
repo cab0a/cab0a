@@ -48,6 +48,7 @@ jobs:
         run: |
           set -euo pipefail
           repositories=(
+            few-shot-anomaly-poc
             pointcloud-playground
             data-cleaning-toolkit
             ml-evaluation-workbench
