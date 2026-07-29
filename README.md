@@ -10,9 +10,9 @@
 
 | プロジェクト | 解決する問題と技術的な証拠 |
 | --- | --- |
-| [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground#quick-start) | **点群処理を既知の真値で評価。**NumPy・SciPyによる7種類の実験で重なり率と外れ値率を制御し、変換誤差、対応点精度、幾何学的被覆をCSVと比較図へ出力します。 |
-| [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit#quick-start) | **変更内容を追跡できるCSV整形。**Python標準ライブラリ、型付きPython API、JSONスキーマ、文書化した終了コードを備え、行単位の変更理由、SHA-256、同じ入力から同じ内容を生成するCSV・JSONを出力します。デモでは7行から3行を出力し、無効3行と重複1行を記録します。 |
-| [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench#evaluation-design) | **モデル評価の根拠を保存。**共通のデータ分割で3種類の分類器を比較し、6種類の実験と25件の代表比較から分割ごとの評価指標、行単位の予測、誤分類、評価図、SHA-256一覧を生成します。CLI、Python API、主要な成果物仕様はv1.0で固定しています。 |
+| [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground#quick-start) | <strong>点群処理を既知の真値で評価。</strong>NumPy・SciPyによる7種類の実験で重なり率と外れ値率を制御し、変換誤差、対応点精度、幾何学的被覆をCSVと比較図へ出力します。 |
+| [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit#quick-start) | <strong>変更内容を追跡できるCSV整形。</strong>Python標準ライブラリ、型付きPython API、JSONスキーマ、文書化した終了コードを備え、行単位の変更理由、SHA-256、同じ入力から同じ内容を生成するCSV・JSONを出力します。デモでは7行から3行を出力し、無効3行と重複1行を記録します。 |
+| [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench#evaluation-design) | <strong>モデル評価の根拠を保存。</strong>共通のデータ分割で3種類の分類器を比較し、6種類の実験と25件の代表比較から分割ごとの評価指標、行単位の予測、誤分類、評価図、SHA-256一覧を生成します。CLI、Python API、主要な成果物仕様はv1.0で固定しています。 |
 
 | 点群の同時感度分析 | 特徴量除去比較 |
 | --- | --- |
