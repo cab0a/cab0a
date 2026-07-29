@@ -22,7 +22,7 @@
 
 - **入力監査 — [Image Dataset Inspector](https://github.com/cab0a/image-dataset-inspector):** JPEG・PNGを再帰的に検査し、読み込みエラー、画像サイズ、明るさ、コントラスト、ラプラシアン分散をCSVへ記録します。
 - **手法比較 — [Vision Playground](https://github.com/cab0a/vision-playground):** 二値化、ノイズ除去、輪郭検出、古典的な画像分割を、正解データ付きの合成画像と公開画像で165件の手法・条件評価にかけます。
-- **研究記録 — [Research Notes](https://github.com/cab0a/research-notes):** 13件の研究で課題、文献、仮説、実験、結果、考察、制約を接続し、最新研究ではJPEGメタデータの厳格な検査と3種類のデコーダーによる復旧を5環境で比較しています。
+- **研究記録 — [Research Notes](https://github.com/cab0a/research-notes):** 14件の研究で課題、文献、仮説、実験、結果、考察、制約を接続し、最新研究ではJPEGメタデータの保持・除去・正規化・拒否を5環境で比較し、バイト保持、意味保持、厳格な検査、復号画素を分けて評価しています。
 
 ## 非公開プロジェクト
 
