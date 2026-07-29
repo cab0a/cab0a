@@ -70,9 +70,10 @@ summary-structure checks before the portfolio scan runs.
 
 ## Immediate Project Verification
 
-Each public project contains a `Markdown` workflow. A push or pull request that
-adds, changes, or removes a Markdown file checks out this shared validator and
-scans only the affected repository. Manual execution is also available.
+Each public project contains a `Markdown` workflow that delegates to
+[`project-markdown.yml`](../.github/workflows/project-markdown.yml). A push or
+pull request that adds, changes, or removes a Markdown file scans only the
+affected repository. Manual execution is also available.
 
 Changes that do not touch Markdown or the workflow file do not start this
 additional job. The existing project CI remains responsible for package tests
