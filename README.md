@@ -1,5 +1,7 @@
 # Python R&Dエンジニア
 
+[![Portfolio Markdown](https://github.com/cab0a/cab0a/actions/workflows/portfolio-markdown.yml/badge.svg)](https://github.com/cab0a/cab0a/actions/workflows/portfolio-markdown.yml)
+
 機械学習評価、コンピュータビジョン、点群・3Dデータ処理を中心に、再現可能な実験基盤と監査可能なPythonツールを実装しています。
 
 - **主な領域:** 機械学習評価、画像処理、点群・3Dデータ処理、データ品質確認

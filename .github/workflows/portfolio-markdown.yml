@@ -1,0 +1,76 @@
+name: Portfolio Markdown
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - README.md
+      - tools/**
+      - .github/workflows/portfolio-markdown.yml
+  pull_request:
+    paths:
+      - README.md
+      - tools/**
+      - .github/workflows/portfolio-markdown.yml
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-markdown-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@v4
+        with:
+          path: cab0a
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Clone public project repositories
+        shell: bash
+        run: |
+          set -euo pipefail
+          repositories=(
+            pointcloud-playground
+            data-cleaning-toolkit
+            ml-evaluation-workbench
+            vision-playground
+            image-dataset-inspector
+            research-notes
+          )
+          for repository in "${repositories[@]}"; do
+            git clone \
+              --branch main \
+              --depth 1 \
+              "https://github.com/cab0a/${repository}.git" \
+              "${repository}"
+          done
+
+      - name: Test validator
+        run: >-
+          python -m unittest discover
+          -s cab0a/tools
+          -p "test_*.py"
+          -v
+
+      - name: Validate portfolio Markdown
+        run: >-
+          python cab0a/tools/check_portfolio_markdown.py
+          --workspace "${GITHUB_WORKSPACE}"
+          --strict-git
+          --verbose
