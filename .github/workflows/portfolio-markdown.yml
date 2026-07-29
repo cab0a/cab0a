@@ -8,11 +8,13 @@ on:
       - README.md
       - tools/**
       - .github/workflows/portfolio-markdown.yml
+      - .github/workflows/project-markdown.yml
   pull_request:
     paths:
       - README.md
       - tools/**
       - .github/workflows/portfolio-markdown.yml
+      - .github/workflows/project-markdown.yml
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:

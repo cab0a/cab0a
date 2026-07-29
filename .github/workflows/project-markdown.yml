@@ -1,0 +1,49 @@
+name: Project Markdown
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out project repository
+        uses: actions/checkout@v6
+        with:
+          path: ${{ github.event.repository.name }}
+          persist-credentials: false
+
+      - name: Check out shared portfolio validator
+        uses: actions/checkout@v6
+        with:
+          repository: cab0a/cab0a
+          ref: main
+          path: cab0a
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Test shared validator
+        run: >-
+          python -m unittest discover
+          -s cab0a/tools
+          -p "test_*.py"
+          -v
+
+      - name: Validate repository Markdown
+        shell: bash
+        run: |
+          repository="${GITHUB_REPOSITORY#*/}"
+          python cab0a/tools/check_portfolio_markdown.py \
+            --workspace "${GITHUB_WORKSPACE}" \
+            --strict-git \
+            --verbose \
+            "${repository}"

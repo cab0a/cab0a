@@ -1,6 +1,7 @@
 """Regression tests for the portfolio Markdown validator."""
 
 from pathlib import Path
+from tempfile import TemporaryDirectory
 import unittest
 
 from check_portfolio_markdown import (
@@ -8,6 +9,7 @@ from check_portfolio_markdown import (
     check_common_text_quality,
     check_english_summary,
     check_japanese_summary,
+    check_markdown_workflow,
 )
 
 
@@ -154,6 +156,57 @@ class EnglishSummaryTests(unittest.TestCase):
         findings = self.findings_for(text)
         self.assertTrue(
             any("first English section" in finding.message for finding in findings)
+        )
+
+
+class MarkdownWorkflowTests(unittest.TestCase):
+    VALID_WORKFLOW = """\
+name: Markdown
+on:
+  push:
+    paths:
+      - "**/*.md"
+  pull_request:
+  workflow_dispatch:
+jobs:
+  validate:
+    uses: cab0a/cab0a/.github/workflows/project-markdown.yml@main
+"""
+
+    def findings_for(self, workflow: str | None) -> list[Finding]:
+        with TemporaryDirectory() as temporary_directory:
+            repository_path = Path(temporary_directory)
+            if workflow is not None:
+                workflow_path = (
+                    repository_path / ".github" / "workflows" / "markdown.yml"
+                )
+                workflow_path.parent.mkdir(parents=True)
+                workflow_path.write_text(workflow, encoding="utf-8")
+            findings: list[Finding] = []
+            check_markdown_workflow(
+                REPOSITORY,
+                repository_path,
+                findings,
+            )
+            return findings
+
+    def test_accepts_shared_validator_workflow(self) -> None:
+        self.assertEqual(self.findings_for(self.VALID_WORKFLOW), [])
+
+    def test_rejects_missing_workflow(self) -> None:
+        findings = self.findings_for(None)
+        self.assertTrue(
+            any("workflow is missing" in finding.message for finding in findings)
+        )
+
+    def test_rejects_workflow_without_markdown_trigger(self) -> None:
+        workflow = self.VALID_WORKFLOW.replace('      - "**/*.md"\n', "")
+        findings = self.findings_for(workflow)
+        self.assertTrue(
+            any(
+                "Markdown path filter is missing" in finding.message
+                for finding in findings
+            )
         )
 
 

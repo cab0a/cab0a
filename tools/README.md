@@ -2,14 +2,15 @@
 
 ## 日本語概要
 
-この検査は、プロフィールと6つの公開プロジェクトにある全Markdownを対象に、日本語概要、README以外の英語概要、UTF-8、文字化けの兆候、日本語間の不要な半角空白、マージ競合記号、ローカルリンクを確認します。プロジェクトのルートREADMEだけは、主要セクションや代表結果などの構造も追加で検査します。
+この検査は、プロフィールと6つの公開プロジェクトにある全Markdownを対象に、日本語概要、README以外の英語概要、UTF-8、文字化けの兆候、日本語間の不要な半角空白、マージ競合記号、ローカルリンクを確認します。Markdownの変更時には対象リポジトリを即時検査し、毎日1回はポートフォリオ全体を検査します。プロジェクトのルートREADMEだけは、主要セクションや代表結果などの構造も追加で検査します。
 
 GitHub Actionsで毎日実行する方法とローカル実行の詳細は以下の英語本文を参照してください。
 
 ---
 
-The validator applies one documentation contract across the public portfolio
-without duplicating a workflow in every project repository.
+The validator applies one documentation contract across the public portfolio.
+Its implementation remains in the profile repository; lightweight project
+workflows call that shared implementation instead of copying validation code.
 
 ## Scope
 
@@ -32,6 +33,9 @@ representative evidence, Quick Start, artifacts, evaluation boundaries,
 reproducibility, development, compatibility, and license sections. These
 project-level requirements are not imposed on changelogs, result reports,
 research notes, or reference documents.
+
+Each project is also checked for the lightweight Markdown workflow, its push
+and pull-request path filters, and its invocation of the shared validator.
 
 ## Local Run
 
@@ -63,6 +67,16 @@ The workflow uses Python's standard library only. It reads repository content
 and does not modify files, settings, releases, or Social preview images.
 Regression tests exercise the Japanese-spacing, mojibake, merge-marker, and
 summary-structure checks before the portfolio scan runs.
+
+## Immediate Project Verification
+
+Each public project contains a `Markdown` workflow. A push or pull request that
+adds, changes, or removes a Markdown file checks out this shared validator and
+scans only the affected repository. Manual execution is also available.
+
+Changes that do not touch Markdown or the workflow file do not start this
+additional job. The existing project CI remains responsible for package tests
+and artifact reproduction.
 
 ## Boundaries
 

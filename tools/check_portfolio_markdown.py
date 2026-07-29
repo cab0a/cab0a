@@ -789,6 +789,68 @@ def check_local_agents(
             )
 
 
+def check_markdown_workflow(
+    repository: str,
+    repository_path: Path,
+    findings: list[Finding],
+) -> None:
+    workflow_path = repository_path / ".github" / "workflows" / "markdown.yml"
+    location = ".github/workflows/markdown.yml"
+    try:
+        workflow_text = workflow_path.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        findings.append(
+            Finding(
+                "FAIL",
+                repository,
+                location,
+                "shared Markdown validation workflow is missing",
+            )
+        )
+        return
+    except UnicodeDecodeError as error:
+        findings.append(
+            Finding(
+                "FAIL",
+                repository,
+                location,
+                f"workflow is not valid UTF-8: {error}",
+            )
+        )
+        return
+    except OSError as error:
+        findings.append(
+            Finding(
+                "FAIL",
+                repository,
+                location,
+                f"workflow could not be read: {error}",
+            )
+        )
+        return
+
+    required_fragments = {
+        "push trigger": "  push:",
+        "pull-request trigger": "  pull_request:",
+        "manual trigger": "  workflow_dispatch:",
+        "Markdown path filter": '"**/*.md"',
+        "shared workflow reference": (
+            "uses: cab0a/cab0a/.github/workflows/"
+            "project-markdown.yml@main"
+        ),
+    }
+    for requirement, fragment in required_fragments.items():
+        if fragment not in workflow_text:
+            findings.append(
+                Finding(
+                    "FAIL",
+                    repository,
+                    location,
+                    f"{requirement} is missing",
+                )
+            )
+
+
 def git_status(repository_path: Path) -> tuple[bool, str]:
     completed = subprocess.run(
         ["git", "status", "--short", "--branch"],
@@ -825,6 +887,8 @@ def check_repository(
         ], 0, "README missing"
 
     check_local_agents(repository, repository_path, findings)
+    if repository in PROJECT_REPOSITORIES:
+        check_markdown_workflow(repository, repository_path, findings)
 
     files = markdown_files(repository_path)
     texts: dict[Path, str] = {}
