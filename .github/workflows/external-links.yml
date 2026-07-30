@@ -1,0 +1,101 @@
+name: External Links
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/external-links.yml
+  pull_request:
+    paths:
+      - .github/workflows/external-links.yml
+  schedule:
+    - cron: "17 1 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: external-links-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@v6
+        with:
+          path: cab0a
+          persist-credentials: false
+
+      - name: Clone public project repositories
+        shell: bash
+        run: |
+          set -euo pipefail
+          repositories=(
+            few-shot-anomaly-poc
+            pointcloud-playground
+            data-cleaning-toolkit
+            ml-evaluation-workbench
+            vision-playground
+            image-dataset-inspector
+            research-notes
+          )
+          for repository in "${repositories[@]}"; do
+            git clone \
+              --branch main \
+              --depth 1 \
+              "https://github.com/cab0a/${repository}.git" \
+              "${repository}"
+          done
+
+      - name: Check external HTTPS links
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          args: >-
+            --scheme https
+            --no-progress
+            --max-retries 2
+            --retry-wait-time 2
+            --timeout 20
+            --max-concurrency 32
+            --host-concurrency 2
+            --host-request-interval 200ms
+            --accept "100..=103,200..=299,403"
+            --exclude "^https://www\\.cipa\\.jp/"
+            "./**/*.md"
+          fail: true
+          failIfEmpty: true
+          jobSummary: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # CIPA's legacy TLS configuration is incompatible with lychee's rustls
+      # client, so check those official references with curl/OpenSSL instead.
+      - name: Check CIPA references
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t urls < <(
+            grep -RhoE \
+              --include="*.md" \
+              'https://www\.cipa\.jp/[^][()<>[:space:]]+' \
+              . |
+              sort -u
+          )
+          test "${#urls[@]}" -gt 0
+          for url in "${urls[@]}"; do
+            curl \
+              --fail \
+              --location \
+              --silent \
+              --show-error \
+              --retry 2 \
+              --max-time 30 \
+              --user-agent "cab0a-portfolio-link-check" \
+              --output /dev/null \
+              "${url}"
+          done
