@@ -34,7 +34,7 @@ class PortfolioInventoryTests(unittest.TestCase):
             {
                 "few-shot-anomaly-poc",
                 "pointcloud-playground",
-                "data-cleaning-toolkit",
+                "research-notes",
             },
         )
 

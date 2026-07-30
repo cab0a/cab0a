@@ -30,7 +30,7 @@ ALL_REPOSITORIES = (PROFILE_REPOSITORY, *PROJECT_REPOSITORIES)
 FEATURED_REPOSITORIES = {
     "few-shot-anomaly-poc",
     "pointcloud-playground",
-    "data-cleaning-toolkit",
+    "research-notes",
 }
 
 INLINE_LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)\n]+)\)")
@@ -781,7 +781,7 @@ def check_profile(text: str, findings: list[Finding]) -> None:
                     PROFILE_REPOSITORY,
                     "README.md",
                     "Featured Projects must contain exactly few-shot-anomaly-poc, "
-                    "pointcloud-playground, and data-cleaning-toolkit",
+                    "pointcloud-playground, and research-notes",
                 )
             )
 
