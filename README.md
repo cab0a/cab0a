@@ -23,7 +23,7 @@
 - **モデル評価 — [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench):** 共通のデータ分割で3種類の分類器を比較し、6種類の実験と25件の代表比較から分割ごとの評価指標、行単位の予測、誤分類、評価図、SHA-256一覧を生成します。
 - **入力監査 — [Image Dataset Inspector](https://github.com/cab0a/image-dataset-inspector):** JPEG・PNGを再帰的に検査し、読み込みエラー、画像サイズ、明るさ、コントラスト、ラプラシアン分散をCSVへ記録します。
 - **手法比較 — [Vision Playground](https://github.com/cab0a/vision-playground):** 二値化、ノイズ除去、輪郭検出、古典的な画像分割を、正解データ付きの合成画像と公開画像で165件の手法・条件評価にかけます。
-- **研究記録 — [Research Notes](https://github.com/cab0a/research-notes):** 15件の研究で課題、文献、仮説、実験、結果、考察、制約を接続し、最新研究ではJPEGメタデータ方針を最大10世代まで反復し、5環境の3,300観測からメタデータ状態、圧縮画像、完全ファイル、復号画素の安定性を分けて評価しています。
+- **研究記録 — [Research Notes](https://github.com/cab0a/research-notes):** 16件の研究で課題、文献、仮説、実験、結果、考察、制約を接続し、最新研究ではEXIF・XMP・ICCなど12個の合成fieldに対するallowlist・denylistを比較し、5環境の1,440判断からfield provenance、保持理由、metadata状態、完全JPEG、復号画素の安定性を分けて評価しています。
 
 ## 非公開プロジェクト
 
