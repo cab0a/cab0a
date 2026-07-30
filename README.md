@@ -4,15 +4,15 @@
 
 - **主な領域:** 機械学習評価、画像処理、点群・3Dデータ処理、データ品質確認
 - **開発経験:** 技術調査、要件定義、設計、実装、レビュー、テスト、評価、導入、保守
-- **公開成果物:** CLI、公開API、pytest、GitHub Actions、CSV・JSON、評価図、SHA-256、監査レポート
+- **公開成果物:** CLI、公開API、pytest、GitHub Actions、CSV・JSON、評価図、監査レポート
 
 ## 代表プロジェクト
 
 | プロジェクト | 解決する問題と技術的な証拠 |
 | --- | --- |
-| [Few-Shot Anomaly PoC](https://github.com/cab0a/few-shot-anomaly-poc#quick-start) | <strong>少数例の異常検知を採否判定まで検証。</strong>正常画像20枚以内・CPU実行・異常ラベルを学習に使わない条件で2手法を比較し、事前固定した誤検知率・再現率・処理時間の基準により両手法を却下しました。ラベル開示前のスコア、誤検知・見逃し、処理時間、判定、SHA-256付き成果物を保存しています。 |
+| [Few-Shot Anomaly PoC](https://github.com/cab0a/few-shot-anomaly-poc#quick-start) | <strong>少数例の異常検知を採否判定まで検証。</strong>正常画像20枚以内・CPU実行・異常ラベルを学習に使わない条件で2手法を比較し、事前固定した誤検知率・再現率・処理時間の基準により両手法を却下しました。ラベル開示前のスコア、誤検知・見逃し、処理時間、判定根拠をCSV・JSONで保存しています。 |
 | [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground#quick-start) | <strong>点群処理を既知の真値で評価。</strong>NumPy・SciPyによる7種類の実験で重なり率と外れ値率を制御し、変換誤差、対応点精度、幾何学的被覆をCSVと比較図へ出力します。 |
-| [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit#quick-start) | <strong>変更内容を追跡できるCSV整形。</strong>Python標準ライブラリ、型付きPython API、JSONスキーマ、文書化した終了コードを備え、行単位の変更理由、SHA-256、同じ入力から同じ内容を生成するCSV・JSONを出力します。デモでは7行から3行を出力し、無効3行と重複1行を記録します。 |
+| [Data Cleaning Toolkit](https://github.com/cab0a/data-cleaning-toolkit#quick-start) | <strong>変更内容を追跡できるCSV整形。</strong>Python標準ライブラリ、型付きPython API、JSONスキーマ、文書化した終了コードを備え、行単位の変更理由を監査JSONへ記録し、同じ入力から同じ内容のCSV・JSONを生成します。デモでは7行から3行を出力し、無効3行と重複1行を記録します。 |
 
 | 異常検知の固定基準評価 | 点群の同時感度分析 |
 | --- | --- |
@@ -20,7 +20,7 @@
 
 ## その他の公開プロジェクト
 
-- **モデル評価 — [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench):** 共通のデータ分割で3種類の分類器を比較し、6種類の実験と25件の代表比較から分割ごとの評価指標、行単位の予測、誤分類、評価図、SHA-256一覧を生成します。
+- **モデル評価 — [ML Evaluation Workbench](https://github.com/cab0a/ml-evaluation-workbench):** 共通のデータ分割で3種類の分類器を比較し、6種類の実験と25件の代表比較から分割ごとの評価指標、行単位の予測、誤分類、評価図を生成します。
 - **入力監査 — [Image Dataset Inspector](https://github.com/cab0a/image-dataset-inspector):** JPEG・PNGを再帰的に検査し、読み込みエラー、画像サイズ、明るさ、コントラスト、ラプラシアン分散をCSVへ記録します。
 - **手法比較 — [Vision Playground](https://github.com/cab0a/vision-playground):** 二値化、ノイズ除去、輪郭検出、古典的な画像分割を、正解データ付きの合成画像と公開画像で165件の手法・条件評価にかけます。
 - **研究記録 — [Research Notes](https://github.com/cab0a/research-notes):** 16件の研究で課題、文献、仮説、実験、結果、考察、制約を接続し、最新研究ではEXIF・XMP・ICCなど12個の合成fieldに対するallowlist・denylistを比較し、5環境の1,440判断からfield provenance、保持理由、metadata状態、完全JPEG、復号画素の安定性を分けて評価しています。
@@ -37,10 +37,6 @@
 
 - **再現性:** コミット済みの入力と設定から、CLIで数値成果物と図を再生成
 - **定量評価:** 既知の真値、共通のデータ分割、制御したテストデータを使って条件間を比較
-- **監査可能性:** 行・分割・条件単位の結果と生成条件・SHA-256を保存
+- **監査可能性:** 行・分割・条件単位の結果と、入力・設定・判断根拠を保存
 - **制約の明示:** 統制実験の結果と外部への一般化可能性を区別
 - **継続的な検証:** pytestとGitHub Actionsで対応Pythonバージョンと主要インターフェースを確認
-
-## お問い合わせ
-
-技術調査、Python PoC、画像・点群処理、機械学習評価に関するご相談は、[CrowdWorks](https://crowdworks.jp/public/employees/4429947)からご連絡ください。
