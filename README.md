@@ -12,7 +12,7 @@
 | --- | --- |
 | [Few-Shot Anomaly PoC](https://github.com/cab0a/few-shot-anomaly-poc) | <strong>少数例の異常検知を採否判定まで検証。</strong>正常画像20枚以内・CPU実行・異常ラベルを学習に使わない条件で2手法を比較し、事前固定した誤検知率・再現率・処理時間の基準により両手法を却下しました。ラベル開示前のスコア、誤検知・見逃し、処理時間、判定根拠をCSV・JSONで保存しています。 |
 | [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground) | <strong>点群処理を既知の真値で評価。</strong>NumPy・SciPyによる7種類の実験で重なり率と外れ値率を制御し、変換誤差、対応点精度、幾何学的被覆をCSVと比較図へ出力します。 |
-| [Research Notes](https://github.com/cab0a/research-notes) | <strong>研究課題を再現可能な証拠へ接続。</strong>17件の研究で文献調査、統制実験、結果、考察、制約を記録しています。最新のv0.17.0では、JPEG metadata admissionの10種類のresource上限を24個の合成fixtureで評価し、5環境の120観測からdecision、reason code、work counter、fixture hashの安定性を確認しています。 |
+| [Research Notes](https://github.com/cab0a/research-notes) | <strong>研究課題を再現可能な証拠へ接続。</strong>20件の研究で文献調査、統制実験、結果、考察、制約を記録しています。最新のv0.20.0では、resource admission、relationship coverage、opaque metadata、integrity、retentionを順序付きで合成し、9入力と4種類のpolicy profileによる36観測について、decision、reason code、最初に判断を確定したstage、出力field数を記録しています。 |
 
 | 異常検知の固定基準評価 | 点群の同時感度分析 |
 | --- | --- |
