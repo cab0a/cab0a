@@ -1,8 +1,8 @@
 # Python R&Dエンジニア
 
-機械学習評価、コンピュータビジョン、点群・3Dデータ処理を中心に、再現可能な実験基盤と監査可能なPythonツールを実装しています。
+機械学習評価、コンピュータビジョン、点群・3Dデータ処理、STEP/B-rep解析を中心に、再現可能な実験基盤と監査可能なPythonツールを実装しています。
 
-- **主な領域:** 機械学習評価、画像処理、点群・3Dデータ処理、データ品質確認
+- **主な領域:** 機械学習評価、画像処理、点群・3Dデータ処理、STEP/B-rep解析、データ品質確認
 - **開発経験:** 技術調査、要件定義、設計、実装、レビュー、テスト、評価、導入、保守
 - **公開成果物:** CLI、公開API、pytest、GitHub Actions、CSV・JSON、評価図、監査レポート
 
@@ -12,7 +12,7 @@
 | --- | --- |
 | [Few-Shot Anomaly PoC](https://github.com/cab0a/few-shot-anomaly-poc) | <strong>少数例の異常検知を採否判定まで検証。</strong>正常画像20枚以内・CPU実行・異常ラベルを学習に使わない条件で2手法を比較し、事前固定した誤検知率・再現率・処理時間の基準により両手法を却下しました。ラベル開示前のスコア、誤検知・見逃し、処理時間、判定根拠をCSV・JSONで保存しています。 |
 | [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground) | <strong>点群処理を既知の真値で評価。</strong>NumPy・SciPyによる7種類の実験で重なり率と外れ値率を制御し、変換誤差、対応点精度、幾何学的被覆をCSVと比較図へ出力します。 |
-| [Research Notes](https://github.com/cab0a/research-notes) | <strong>研究課題を再現可能な証拠へ接続。</strong>20件の研究で文献調査、統制実験、結果、考察、制約を記録しています。最新のv0.20.0では、resource admission、relationship coverage、opaque metadata、integrity、retentionを順序付きで合成し、9入力と4種類のpolicy profileによる36観測について、decision、reason code、最初に判断を確定したstage、出力field数を記録しています。 |
+| [Research Notes](https://github.com/cab0a/research-notes) | <strong>研究課題を再現可能な証拠へ接続。</strong>21件の研究で文献調査、統制実験、結果、考察、制約を記録しています。最新のv0.21.0では、Open CASCADEに依存しない限定的なSTEP Part 21解析基盤を実装し、6個の合成fixtureから面・辺・シェル・立体、surface宣言、隣接関係、自由辺、所有関係をCSVへ出力します。閉じた四面体、開いたシェル、分離した2立体、未解決参照、重複IDを既知の期待値で検証し、一般的なSTEP適合性や正確な幾何評価は主張しません。 |
 
 | 異常検知の固定基準評価 | 点群の同時感度分析 |
 | --- | --- |
