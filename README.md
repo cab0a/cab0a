@@ -12,7 +12,7 @@
 | --- | --- |
 | [Few-Shot Anomaly PoC](https://github.com/cab0a/few-shot-anomaly-poc) | <strong>少数例の異常検知を採否判定まで検証。</strong>正常画像20枚以内・CPU実行・異常ラベルを学習に使わない条件で2手法を比較し、事前固定した誤検知率・再現率・処理時間の基準により両手法を却下しました。ラベル開示前のスコア、誤検知・見逃し、処理時間、判定根拠をCSV・JSONで保存しています。 |
 | [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground) | <strong>点群処理を既知の真値で評価。</strong>NumPy・SciPyによる7種類の実験で重なり率と外れ値率を制御し、変換誤差、対応点精度、幾何学的被覆をCSVと比較図へ出力します。 |
-| [Research Notes](https://github.com/cab0a/research-notes) | <strong>STEP仕様理解を再現可能なPythonパーサーへ接続。</strong>24件の研究で文献調査、統制実験、結果、考察、制約を記録しています。v0.24.0ではPart 21の第1版・第2版・第3版、文字コード、コメント、binary、複数DATA部、ANCHOR、REFERENCE、SIGNATURE、ZIP transportを34個の合成fixtureで検証し、内部パーサーは17件の正常例と17件の異常例をすべて理由付きで期待どおり判定しました。固定revisionの2つの公開Pythonパーサーにも同じ入力を与え、受理境界の差を記録しています。結果をISO認証、完全なPart 21、EXPRESS・AP242適合、外部参照・署名・幾何の検証へ一般化しません。 |
+| [Research Notes](https://github.com/cab0a/research-notes) | <strong>STEP仕様理解を再現可能なPythonパーサーへ接続。</strong>25件の研究で文献調査、統制実験、結果、考察、制約を記録しています。v0.25.0ではEXPRESSの字句・構文を40個の合成fixtureで検証し、20件を受理、19件を拒否、resource上限の1件を隔離しました。受理したsourceからschema、type、entity、attribute、interface、constant、algorithm envelopeなど59件の未解決model inventoryを生成し、元sourceも再構成できます。これは完全なEXPRESS適合、名前解決、型検査、rule実行、Part 21・AP242検証、幾何評価の主張ではありません。 |
 
 | 異常検知の固定基準評価 | 点群の同時感度分析 |
 | --- | --- |
