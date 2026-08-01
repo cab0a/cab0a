@@ -12,7 +12,7 @@
 | --- | --- |
 | [Few-Shot Anomaly PoC](https://github.com/cab0a/few-shot-anomaly-poc) | <strong>少数例の異常検知を採否判定まで検証。</strong>正常画像20枚以内・CPU実行・異常ラベルを学習に使わない条件で2手法を比較し、事前固定した誤検知率・再現率・処理時間の基準により両手法を却下しました。ラベル開示前のスコア、誤検知・見逃し、処理時間、判定根拠をCSV・JSONで保存しています。 |
 | [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground) | <strong>点群処理を既知の真値で評価。</strong>NumPy・SciPyによる7種類の実験で重なり率と外れ値率を制御し、変換誤差、対応点精度、幾何学的被覆をCSVと比較図へ出力します。 |
-| [Research Notes](https://github.com/cab0a/research-notes) | <strong>研究課題を再現可能な証拠へ接続。</strong>21件の研究で文献調査、統制実験、結果、考察、制約を記録しています。最新のv0.21.0では、Open CASCADEに依存しない限定的なSTEP Part 21解析基盤を実装し、6個の合成fixtureから面・辺・シェル・立体、surface宣言、隣接関係、自由辺、所有関係をCSVへ出力します。閉じた四面体、開いたシェル、分離した2立体、未解決参照、重複IDを既知の期待値で検証し、一般的なSTEP適合性や正確な幾何評価は主張しません。 |
+| [Research Notes](https://github.com/cab0a/research-notes) | <strong>研究課題を再現可能な証拠へ接続。</strong>22件の研究で文献調査、統制実験、結果、考察、制約を記録しています。v0.21.0では合成STEPから面・辺・シェル・立体の位相を解決し、v0.22.0では13個のfixtureから複数DATA section、complex entity、UTF-8、ANCHOR、外部参照、署名、ZIPなどの高度なPart 21構造とparser境界を検証します。閉じた四面体STEPとpreview、CSV、hash付きmanifestを保存し、外部取得、署名検証、archive展開、EXPRESS・AP242適合、正確な幾何評価を未検証のまま成功扱いしません。 |
 
 | 異常検知の固定基準評価 | 点群の同時感度分析 |
 | --- | --- |
