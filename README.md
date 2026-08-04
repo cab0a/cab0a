@@ -12,7 +12,7 @@
 | --- | --- |
 | [Few-Shot Anomaly PoC](https://github.com/cab0a/few-shot-anomaly-poc) | <strong>少数例の異常検知を採否判定まで検証。</strong>正常画像20枚以内・CPU実行・異常ラベルを学習に使わない条件で2手法を比較し、事前固定した誤検知率・再現率・処理時間の基準により両手法を却下しました。ラベル開示前のスコア、誤検知・見逃し、処理時間、判定根拠をCSV・JSONで保存しています。 |
 | [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground) | <strong>点群処理を既知の真値で評価。</strong>NumPy・SciPyによる7種類の実験で重なり率と外れ値率を制御し、変換誤差、対応点精度、幾何学的被覆をCSVと比較図へ出力します。 |
-| [Research Notes](https://github.com/cab0a/research-notes) | <strong>STEP仕様理解を再現可能なPythonパーサーへ接続。</strong>29件の研究で文献調査、統制実験、結果、考察、制約を記録しています。v0.29.0ではAP242の製品定義から形状表現・表現項目・座標次元・単位へ至る意味経路を14件の合成fixtureで検証しました。3件を受理、8件を隔離、3件を拒否し、5経路、source span付きの59参照関係、9表現項目、15単位を記録します。AP242完全適合、assembly occurrence、変換合成、単位換算、B-rep幾何評価、永続CAD identityの主張ではありません。現在と今後の公開版は研究・教育・個人的実験向けのPolyForm Noncommercial License 1.0.0とし、商用利用は書面による別契約とします。 |
+| [Research Notes](https://github.com/cab0a/research-notes) | <strong>STEP仕様理解を再現可能なPythonパーサーへ接続。</strong>30件の研究で文献調査、統制実験、結果、考察、制約を記録しています。v0.30.0ではAP242の再利用可能な部品定義と組立内の個々の出現を分け、子部品から親組立への配置変換、入れ子経路、長さ単位換算を17件の合成STEPで検証しました。5件を受理、6件を隔離、6件を拒否し、受理群では8出現、8経路、原文位置付きの226参照関係、16単位観測を記録します。AP242完全適合、任意の配置演算子、派生単位、B-rep幾何評価、永続的なCAD識別子の主張ではありません。現在と今後の公開版は研究・教育・個人的実験向けのPolyForm Noncommercial License 1.0.0とし、商用利用は書面による別契約とします。 |
 
 | 異常検知の固定基準評価 | 点群の同時感度分析 |
 | --- | --- |
