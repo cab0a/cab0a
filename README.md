@@ -12,7 +12,7 @@
 | --- | --- |
 | [Few-Shot Anomaly PoC](https://github.com/cab0a/few-shot-anomaly-poc) | <strong>少数例の異常検知を採否判定まで検証。</strong>v0.1では正常画像20枚以内・CPU実行・異常ラベルを学習に使わない条件で2手法を比較し、事前固定基準により両手法を却下しました。v0.2ではDINOv2を加えた3方式について、label非開示のfinal-test 200枚でscore・classification・各600件のCPU latencyを固定し、各方式の先頭10件を最大絶対差0.0で再現しました。その後exact opaque IDでlabelを1回だけ結合し、ECC、Patch HOG、DINOv2のAUROCを0.6640、0.7147、0.7943、anomaly recallを0.13、0.16、0.34と記録しました。全方式が事前登録済みrecall 0.90未満で、最終判断は次のhard-gate工程で固定します。 |
 | [Point Cloud Playground](https://github.com/cab0a/pointcloud-playground) | <strong>点群処理を既知の真値で評価。</strong>NumPy・SciPyによる7種類の実験で重なり率と外れ値率を制御し、変換誤差、対応点精度、幾何学的被覆をCSVと比較図へ出力します。 |
-| [Research Notes](https://github.com/cab0a/research-notes) | <strong>STEP仕様理解をPython解析器と形状計算へ接続。</strong>32件の研究で文献調査、統制実験、結果、考察、制約を記録しています。v0.32.0では、解析式から生成した平面2面と円筒面1面の面積、重心、媒介変数範囲、代表点、支持曲面法線、面の向きを反映した法線、曲面軸・半径、面公差を、選定したOpen CASCADE Technologyの計算結果と比較しました。幾何値と反転面の向きはSTEP往復後も合成正解値と一致しましたが、構築時の面公差`1e-4`、`2e-4`、`3e-4`は再読込後すべて`1e-7`となり、公差を段階と出典を伴う値として記録しています。周期境界、一般的なトリム面への一般化、一般的なSTEP適合、第三者バイナリの再配布許可は主張しません。公開版は研究・教育・個人的実験向けのPolyForm Noncommercial License 1.0.0とし、商用利用は書面による別契約とします。 |
+| [Research Notes](https://github.com/cab0a/research-notes) | <strong>STEP仕様理解をPython解析器と形状計算へ接続。</strong>33件の研究で文献調査、統制実験、結果、考察、制約を記録しています。v0.33.0では、解析式から生成した平面、部分円筒面、全周円筒面について、11本の固有辺と12回の境界使用を区別し、線・円の三次元曲線、実長、媒介変数範囲、面上の二次元曲線、境界での向き、円筒の継ぎ目を評価しました。全周円筒では1本の継ぎ目辺が面上で`u=0`と`u=2π`の2本として現れ、STEP再読込後の三次元曲線と面上曲線の最大距離は17点標本で`1.24e-12`でした。これは固定した合成形状の回帰結果であり、一般的なトリム面、退化辺、Bスプライン曲線、一般的なSTEP適合、第三者バイナリの再配布許可は主張しません。公開版は研究・教育・個人的実験向けのPolyForm Noncommercial License 1.0.0とし、商用利用は書面による別契約とします。 |
 
 | 異常検知の固定基準評価 | 点群の同時感度分析 |
 | --- | --- |
