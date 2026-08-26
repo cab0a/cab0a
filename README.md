@@ -2,8 +2,7 @@
 
 機械学習評価、コンピュータビジョン、点群・3Dデータ処理、STEP/B-rep解析を中心に、再現可能な実験基盤と監査可能なPythonツールを実装しています。
 
-**Inefficiency Lab** — 業務改善・AI開発・CAD/製造DX  
-https://inefficiencylab.com/
+**Inefficiency Lab** — [業務改善・AI開発・CAD/製造DX](https://inefficiencylab.com/)
 
 - **主な領域:** 機械学習評価、画像処理、点群・3Dデータ処理、STEP/B-rep解析、データ品質確認
 - **開発経験:** 技術調査、要件定義、設計、実装、レビュー、テスト、評価、導入、保守
